@@ -10,22 +10,19 @@ import LinearProgress from '@mui/material/LinearProgress';
 import EditNavbar from '../../components/editNavbar/index';
 import MenuItem from '@mui/material/MenuItem';
 
-export function EditFlight() {
+export function EditAircraft() {
 	const navigate = useNavigate();
 
 	const { id } = useParams();
 
 	const [form, setForm] = useState({
-		date: '',
-		eobt: '',
-		departure: '',
-		arrival: '',
-		alternative: '',
-		distance: '',
-		aircraft: '',
+		registration: '',
+		make: '',
+		model: '',
+		icaocode: '',
+		fuelPerHour: '',
+		fuelCapacity: '',
 	});
-
-	const [flight, setFlight] = useState([]);
 
 	const [aircraft, setAircraft] = useState([]);
 
@@ -36,9 +33,9 @@ export function EditFlight() {
 	}
 
 	useEffect(() => {
-		async function fetchFlight() {
+		async function fetchAircraft() {
 			try {
-				const response = await api.get(`flight/${id}`);
+				const response = await api.get(`aircraft/${id}`);
 
 				setForm(response.data);
 				setLoading(false);
@@ -47,39 +44,23 @@ export function EditFlight() {
 			}
 		}
 
-		fetchFlight(id);
-	}, []);
-	console.log(form);
-
-	useEffect(() => {
-		async function fetchAircraft() {
-			try {
-				const response = await api.get('/aircraft/aircrafts');
-
-				setAircraft(response.data);
-				setLoading(false);
-			} catch (error) {
-				console.log(error);
-			}
-		}
-
-		fetchAircraft();
+		fetchAircraft(id);
 	}, []);
 
-	async function handleDelete() {
+	async function handleSubmit(event) {
+		event.preventDefault();
 		try {
-			await api.delete(`/flight/delete/${id}`);
+			await api.patch(`/aircraft/edit/${id}`, form);
+
 			navigate('/user-home');
 		} catch (error) {
 			console.log(error);
 		}
 	}
 
-	async function handleSubmit(event) {
-		event.preventDefault();
+	async function handleDelete() {
 		try {
-			await api.patch(`/flight/edit/${id}`, form);
-
+			await api.delete(`/aircraft/delete/${id}`);
 			navigate('/user-home');
 		} catch (error) {
 			console.log(error);
@@ -103,78 +84,55 @@ export function EditFlight() {
 				onSubmit={handleSubmit}
 			>
 				<TextField
-					id='date'
-					name='date'
-					value={form.date}
+					id='registration'
+					name='registration'
+					value={form.registration}
 					onChange={handleChange}
-					label='Date'
+					label='Registration'
 					variant='outlined'
 				/>
 				<TextField
-					id='eobt'
-					name='eobt'
-					value={form.eobt}
+					id='make'
+					name='make'
+					value={form.make}
 					onChange={handleChange}
-					label='EOBT'
+					label='Make'
 					variant='outlined'
 				/>
 				<TextField
-					id='departure'
-					name='departure'
-					value={form.departure}
+					id='model'
+					name='model'
+					value={form.model}
 					onChange={handleChange}
-					label='Departure'
+					label='Model'
 					variant='outlined'
 				/>
 				<TextField
-					id='arrival'
-					name='arrival'
-					value={form.arrival}
+					id='icaoCode'
+					name='icaoCode'
+					value={form.icaoCode}
 					onChange={handleChange}
-					label='Arrival'
+					label='ICAO Code'
 					variant='outlined'
 				/>
 				<TextField
-					id='alternative'
-					name='alternative'
-					value={form.alternative}
+					id='fuelPerHour'
+					name='fuelPerHour'
+					value={form.fuelPerHour}
 					onChange={handleChange}
-					label='Alternative'
+					label='Fuel Per Hour'
 					variant='outlined'
 				/>
 				<TextField
-					id='distance'
-					name='distance'
-					value={form.distance}
+					id='fuelCapacity'
+					name='fuelCapacity'
+					value={form.fuelCapacity}
 					onChange={handleChange}
-					label='Distance'
+					label='Fuel Capacity'
 					variant='outlined'
 				/>
-				<div>
-					<TextField
-						id='aircraft'
-						name='aircraft'
-						select
-						label='Aircraft'
-						value={form.aircraft}
-						onChange={handleChange}
-						style={{ width: '200px' }}
-					>
-						{aircraft.map((currentAircraft) => {
-							return (
-								<MenuItem
-									key={currentAircraft._id}
-									value={currentAircraft._id}
-									onChange={handleChange}
-								>
-									{currentAircraft.registration}
-								</MenuItem>
-							);
-						})}
-					</TextField>
-				</div>
 				<Button variant='contained' type='submit'>
-					Update Flight
+					Update Aircraft
 				</Button>
 				<Button
 					variant='outlined'
@@ -182,7 +140,7 @@ export function EditFlight() {
 					startIcon={<DeleteIcon />}
 					onClick={handleDelete}
 				>
-					DELETE Flight
+					DELETE Aircraft
 				</Button>
 			</Box>
 		</>

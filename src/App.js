@@ -3,7 +3,6 @@ import { AuthContextComponent } from './contexts/authContext';
 import { ProtectedRoute } from './components/protectedRoute';
 import { EditFlight } from './pages/editFlight';
 import { EditUser } from './pages/editUser';
-import { FlightInformation } from './pages/flightInfo';
 import { FlightStatus } from './pages/flightStatus';
 import { Home } from './pages/home';
 import { NewFlight } from './pages/newFlight';
@@ -12,6 +11,8 @@ import { SignUp } from './pages/signUp';
 import { UserHome } from './pages/userHome';
 import { AboutUs } from './pages/aboutUs';
 import { Solution } from './pages/solutions';
+import { NewAircraft } from './pages/newAircraft/index';
+import { EditAircraft } from './pages/editAircraft/index';
 
 function App() {
 	return (
@@ -24,11 +25,7 @@ function App() {
 					<Route path='/aboutus' element={<AboutUs />} />
 					<Route path='/solution' element={<Solution />} />
 					<Route
-						path='/flight-information'
-						element={<ProtectedRoute component={FlightInformation} />}
-					/>
-					<Route
-						path='/flight-status'
+						path='/flight-status/:id'
 						element={<ProtectedRoute component={FlightStatus} />}
 					/>
 					<Route
@@ -46,6 +43,14 @@ function App() {
 					<Route
 						path='/edit-user'
 						element={<ProtectedRoute component={EditUser} />}
+					/>
+					<Route
+						path='/edit-aircraft'
+						element={<ProtectedRoute component={EditAircraft} />}
+					/>
+					<Route
+						path='/new-aircraft'
+						element={<ProtectedRoute component={NewAircraft} />}
 					/>
 				</Routes>
 			</AuthContextComponent>

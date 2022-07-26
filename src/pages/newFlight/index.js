@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import LinearProgress from '@mui/material/LinearProgress';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
-import ResponsiveUserBar from '../../components/userNavbar/index';
+import EditNavbar from '../../components/editNavbar/index';
 
 export function NewFlight() {
 	const navigate = useNavigate();
@@ -20,6 +20,7 @@ export function NewFlight() {
 		arrival: '',
 		alternative: '',
 		distance: '',
+		flightTime: '',
 		aircraft: '',
 	});
 
@@ -51,7 +52,7 @@ export function NewFlight() {
 		try {
 			await api.post('/flight/create-flight', form);
 
-			navigate('/flight-status');
+			navigate('/user-home');
 		} catch (error) {
 			console.log(error);
 		}
@@ -63,7 +64,7 @@ export function NewFlight() {
 		</Box>
 	) : (
 		<>
-			<ResponsiveUserBar />
+			<EditNavbar />
 			<Box
 				component='form'
 				sx={{
@@ -119,6 +120,14 @@ export function NewFlight() {
 					value={form.distance}
 					onChange={handleChange}
 					label='Distance'
+					variant='outlined'
+				/>
+				<TextField
+					id='flightTime'
+					name='flightTime'
+					value={form.flightTime}
+					onChange={handleChange}
+					label='Flight Time'
 					variant='outlined'
 				/>
 				<div>

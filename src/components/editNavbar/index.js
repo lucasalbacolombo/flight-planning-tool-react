@@ -17,7 +17,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 const pages = ['New Flight', 'My Flights'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const ResponsiveUserBar = () => {
+const EditNavbar = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -71,20 +71,10 @@ const ResponsiveUserBar = () => {
 							<MenuItem onClick={handleCloseNavMenu}>
 								<Typography textAlign='center'>
 									<Link
-										to={'/new-flight'}
+										to={'/user-home'}
 										style={{ textDecoration: 'none', color: 'black' }}
 									>
-										NEW FLIGHT
-									</Link>
-								</Typography>
-							</MenuItem>
-							<MenuItem onClick={handleCloseNavMenu}>
-								<Typography textAlign='center'>
-									<Link
-										to={'/new-aircraft'}
-										style={{ textDecoration: 'none', color: 'black' }}
-									>
-										NEW AIRCRAFT
+										Return Home
 									</Link>
 								</Typography>
 							</MenuItem>
@@ -97,21 +87,10 @@ const ResponsiveUserBar = () => {
 							sx={{ my: 2, color: 'white', display: 'block' }}
 						>
 							<Link
-								to={'/new-flight'}
+								to={'/user-home'}
 								style={{ textDecoration: 'none', color: 'white' }}
 							>
-								NEW FLIGHT
-							</Link>
-						</Button>
-						<Button
-							onClick={handleCloseNavMenu}
-							sx={{ my: 2, color: 'white', display: 'block' }}
-						>
-							<Link
-								to={'/new-aircraft'}
-								style={{ textDecoration: 'none', color: 'white' }}
-							>
-								NEW AIRCFRAFT
+								RETURN HOME
 							</Link>
 						</Button>
 					</Box>
@@ -154,4 +133,4 @@ const ResponsiveUserBar = () => {
 		</AppBar>
 	);
 };
-export default ResponsiveUserBar;
+export default EditNavbar;

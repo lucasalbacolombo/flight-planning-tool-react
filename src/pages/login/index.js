@@ -36,8 +36,6 @@ export function Login() {
 		}
 	}
 
-	console.log(form);
-
 	return (
 		<Box
 			style={{ height: 'auto' }}

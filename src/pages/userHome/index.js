@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { api } from '../../api/api';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ResponsiveUserBar from '../../components/userNavbar/index';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
@@ -14,9 +14,7 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 
 export function UserHome() {
-	const { _id } = useParams();
-
-	const [flights, setFlights] = useState();
+	const [flights, setFlights] = useState([]);
 
 	const [loading, setLoading] = useState(true);
 
@@ -24,7 +22,7 @@ export function UserHome() {
 		async function fetchFlights() {
 			try {
 				const response = await api.get('/flight/flights');
-				setFlights([...response.data]);
+				setFlights(response.data);
 				setLoading(false);
 			} catch (error) {
 				console.log(error);
@@ -45,7 +43,7 @@ export function UserHome() {
 			<Grid container spacing={3}>
 				<Grid item xs={12}>
 					<Stack spacing={2}>
-						<h3>Your Flights</h3>
+						<h3>My Flights</h3>
 						{flights.map((currentFlight) => {
 							return (
 								<Card sx={{ minWidth: 275 }} key={currentFlight._id}>
@@ -66,7 +64,10 @@ export function UserHome() {
 											ALT: {currentFlight.alternative}
 										</Typography>
 										<Typography variant='body2'>
-											DISTANCE: {currentFlight.distance}
+											{`DISTANCE: ${currentFlight.distance} NM`}
+										</Typography>
+										<Typography variant='body2'>
+											{`FLIGHT TIME: ${currentFlight.flightTime} minutes`}
 										</Typography>
 										{currentFlight.aircraft.map((currentAircraft) => {
 											return (
@@ -78,13 +79,13 @@ export function UserHome() {
 									</CardContent>
 									<CardActions>
 										<Link
-											to={'/flight-status'}
+											to={`/flight-status/${currentFlight._id}`}
 											style={{ textDecoration: 'none', color: 'black' }}
 										>
 											<Button size='small'>Flight Status</Button>
 										</Link>
 										<Link
-											to={`/edit-flight/${_id}`}
+											to={`/edit-flight/${currentFlight._id}`}
 											style={{ textDecoration: 'none', color: 'black' }}
 										>
 											<Button size='small'>Edit Flight</Button>

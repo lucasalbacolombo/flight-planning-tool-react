@@ -38,8 +38,6 @@ export function SignUp() {
 		}
 	}
 
-	console.log(form);
-
 	return (
 		<Box
 			style={{ height: 'auto' }}
