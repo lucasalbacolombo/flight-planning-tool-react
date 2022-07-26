@@ -1,3 +1,9 @@
+import ResponsiveAppBar from '../../components/navbar';
+
 export function Home() {
-	return;
+	return (
+		<>
+			<ResponsiveAppBar></ResponsiveAppBar>
+		</>
+	);
 }
