@@ -5,6 +5,9 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import style from './style.module.css';
+import ResponsiveAppBar from '../../components/navbar/index';
+import Footer from '../../components/footer/index';
 
 export function SignUp() {
 	const [form, setForm] = useState({
@@ -39,64 +42,72 @@ export function SignUp() {
 	}
 
 	return (
-		<Box
-			style={{ height: 'auto' }}
-			sx={{
-				display: 'flex',
-				justifyContent: 'center',
-				flexWrap: 'wrap',
-				'& > :not(style)': {
-					m: 1,
-					width: 350,
-					height: 350,
-				},
-			}}
-		>
-			<Paper elevation={3}>
-				<form onSubmit={handleSubmit}>
-					<TextField
-						id='name'
-						name='name'
-						value={form.name}
-						onChange={handleChange}
-						label='Name'
-						style={{ marginBottom: '15px' }}
-						variant='outlined'
-					/>
-					<TextField
-						id='email'
-						name='email'
-						value={form.email}
-						onChange={handleChange}
-						label='E-mail'
-						style={{ marginBottom: '15px' }}
-						variant='outlined'
-					/>
-					<TextField
-						id='password'
-						type='password'
-						name='password'
-						value={form.password}
-						onChange={handleChange}
-						label='Password'
-						style={{ marginBottom: '15px' }}
-						variant='outlined'
-					/>
-					<TextField
-						id='passwordConfirmation'
-						type='password'
-						name='passwordConfirmation'
-						value={form.passwordConfirmation}
-						onChange={handleChange}
-						label='Confirm Password'
-						style={{ marginBottom: '15px' }}
-						variant='outlined'
-					/>
-					<Button variant='contained' type='submit'>
-						SignUp
-					</Button>
-				</form>
-			</Paper>
-		</Box>
+		<>
+			<ResponsiveAppBar></ResponsiveAppBar>
+			<Box
+				container
+				direction='column'
+				justifyContent='center'
+				alignItems='center'
+				sx={{
+					display: 'flex',
+					height: '100vh',
+					justifyContent: 'center',
+					flexWrap: 'wrap',
+					'& > :not(style)': {
+						m: 1,
+						width: 380,
+						height: 420,
+					},
+				}}
+			>
+				<Paper elevation={3}>
+					<form onSubmit={handleSubmit} className={style.form}>
+						<TextField
+							id='name'
+							name='name'
+							value={form.name}
+							onChange={handleChange}
+							label='Name'
+							style={{ marginBottom: '15px' }}
+							variant='outlined'
+						/>
+						<TextField
+							id='email'
+							name='email'
+							value={form.email}
+							onChange={handleChange}
+							label='E-mail'
+							style={{ marginBottom: '15px' }}
+							variant='outlined'
+						/>
+						<TextField
+							id='password'
+							type='password'
+							name='password'
+							value={form.password}
+							onChange={handleChange}
+							label='Password'
+							style={{ marginBottom: '15px' }}
+							variant='outlined'
+						/>
+						<TextField
+							id='passwordConfirmation'
+							type='password'
+							name='passwordConfirmation'
+							value={form.passwordConfirmation}
+							onChange={handleChange}
+							label='Confirm Password'
+							style={{ marginBottom: '15px' }}
+							variant='outlined'
+						/>
+						<Button variant='contained' type='submit'>
+							SignUp
+						</Button>
+					</form>
+				</Paper>
+			</Box>
+			<Footer></Footer>
+		</>
 	);
 }

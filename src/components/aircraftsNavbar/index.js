@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styles from './style.module.css';
-import logo from '../../images/logo.png';
 import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,7 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import ExploreIcon from '@mui/icons-material/Explore';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -36,7 +35,7 @@ const AircraftsNavbar = () => {
 		<AppBar position='static' className={styles.navbar}>
 			<Container maxWidth='xl'>
 				<Toolbar disableGutters>
-					<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+					<ExploreIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton
@@ -99,7 +98,7 @@ const AircraftsNavbar = () => {
 							</MenuItem>
 						</Menu>
 					</Box>
-					<AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+					<ExploreIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						<Button
 							onClick={handleCloseNavMenu}

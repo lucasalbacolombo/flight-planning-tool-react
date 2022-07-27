@@ -14,6 +14,7 @@ import { Solution } from './pages/solutions';
 import { NewAircraft } from './pages/newAircraft/index';
 import { EditAircraft } from './pages/editAircraft/index';
 import { MyAircrafts } from './pages/myAircrafts/index';
+import style from './style.module.css';
 
 function App() {
 	return (

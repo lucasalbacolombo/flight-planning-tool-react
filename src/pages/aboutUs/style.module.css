@@ -1,0 +1,11 @@
+.flex {
+	padding: 25px;
+	height: 90vh;
+	display: flex;
+	align-items: center;
+}
+
+.img {
+	width: 65%;
+	border-radius: 49%;
+}

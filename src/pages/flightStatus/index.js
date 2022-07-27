@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { api } from '../../api/api';
+import WindyInit from '../../components/windyAPI/index';
 import axios from 'axios';
 import EditNavbar from '../../components/editNavbar/index';
 import Stack from '@mui/material/Stack';
@@ -92,8 +93,8 @@ export function FlightStatus() {
 		fetchTaf();
 	}, []);
 
+	console.log(metar);
 	console.log(taf);
-	// console.log(flight.aircraft);
 
 	return loading ? (
 		<Box sx={{ width: '100%' }}>
@@ -146,6 +147,7 @@ export function FlightStatus() {
 													</div>
 												);
 											})}
+
 										{airport
 											.filter((currentAirport) => {
 												return currentAirport.cod === flight.alternative;
@@ -298,7 +300,8 @@ export function FlightStatus() {
 					</Stack>
 				</Grid>
 				<Grid item>
-					<div id='windy'></div>
+					<div id='windy' style={{ width: '100%', height: '300px' }}></div>
+					<WindyInit></WindyInit>
 				</Grid>
 			</Grid>
 		</>

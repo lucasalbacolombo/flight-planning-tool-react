@@ -1,6 +1,6 @@
-.navbar {
+.footer {
 	background-color: #002344 !important;
-	height: 100px;
+	height: 80px;
 	display: flex;
 	justify-content: center;
 }
