@@ -7,8 +7,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import LinearProgress from '@mui/material/LinearProgress';
-import EditNavbar from '../../components/editNavbar/index';
-import MenuItem from '@mui/material/MenuItem';
+import AircraftNavbar from '../../components/aircraftsNavbar/index';
 
 export function EditAircraft() {
 	const navigate = useNavigate();
@@ -52,7 +51,7 @@ export function EditAircraft() {
 		try {
 			await api.patch(`/aircraft/edit/${id}`, form);
 
-			navigate('/user-home');
+			navigate('/my-aircrafts');
 		} catch (error) {
 			console.log(error);
 		}
@@ -61,7 +60,7 @@ export function EditAircraft() {
 	async function handleDelete() {
 		try {
 			await api.delete(`/aircraft/delete/${id}`);
-			navigate('/user-home');
+			navigate('/my-aircrafts');
 		} catch (error) {
 			console.log(error);
 		}
@@ -73,7 +72,7 @@ export function EditAircraft() {
 		</Box>
 	) : (
 		<>
-			<EditNavbar />
+			<AircraftNavbar />
 			<Box
 				component='form'
 				sx={{

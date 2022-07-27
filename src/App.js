@@ -13,6 +13,7 @@ import { AboutUs } from './pages/aboutUs';
 import { Solution } from './pages/solutions';
 import { NewAircraft } from './pages/newAircraft/index';
 import { EditAircraft } from './pages/editAircraft/index';
+import { MyAircrafts } from './pages/myAircrafts/index';
 
 function App() {
 	return (
@@ -45,12 +46,16 @@ function App() {
 						element={<ProtectedRoute component={EditUser} />}
 					/>
 					<Route
-						path='/edit-aircraft'
+						path='/edit-aircraft/:id'
 						element={<ProtectedRoute component={EditAircraft} />}
 					/>
 					<Route
 						path='/new-aircraft'
 						element={<ProtectedRoute component={NewAircraft} />}
+					/>
+					<Route
+						path='/my-aircrafts'
+						element={<ProtectedRoute component={MyAircrafts} />}
 					/>
 				</Routes>
 			</AuthContextComponent>

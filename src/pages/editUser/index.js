@@ -126,7 +126,7 @@ export function EditUser() {
 						startIcon={<DeleteIcon />}
 						onClick={handleDelete}
 					>
-						DELETE Flight
+						DELETE ACCOUNT
 					</Button>
 				</form>
 			</Paper>

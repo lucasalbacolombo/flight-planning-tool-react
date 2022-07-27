@@ -92,8 +92,8 @@ export function FlightStatus() {
 		fetchTaf();
 	}, []);
 
-	// console.log(taf);
-	// console.log(flight.aircraft.fuelCapacity);
+	console.log(taf);
+	// console.log(flight.aircraft);
 
 	return loading ? (
 		<Box sx={{ width: '100%' }}>
@@ -180,7 +180,7 @@ export function FlightStatus() {
 											})
 											.map((metar) => {
 												return (
-													<div>
+													<div key={metar.id}>
 														<h4>Departure</h4>
 														<p>{metar.mens}</p>
 													</div>
@@ -194,7 +194,7 @@ export function FlightStatus() {
 											})
 											.map((metar) => {
 												return (
-													<div>
+													<div key={metar.id}>
 														<h4>Arrival</h4>
 														<p>{metar.mens}</p>
 													</div>
@@ -210,7 +210,7 @@ export function FlightStatus() {
 											})
 											.map((metar) => {
 												return (
-													<div>
+													<div key={metar.id}>
 														<h4>Alternative</h4>
 														<p>{metar.mens}</p>
 													</div>
@@ -233,7 +233,7 @@ export function FlightStatus() {
 											})
 											.map((taf) => {
 												return (
-													<div>
+													<div key={taf.id}>
 														<h4>Departure</h4>
 														<p>{taf.mens}</p>
 													</div>
@@ -247,7 +247,7 @@ export function FlightStatus() {
 											})
 											.map((taf) => {
 												return (
-													<div>
+													<div key={taf.id}>
 														<h4>Arrival</h4>
 														<p>{taf.mens}</p>
 													</div>
@@ -261,7 +261,7 @@ export function FlightStatus() {
 											})
 											.map((taf) => {
 												return (
-													<div>
+													<div key={taf.id}>
 														<h4>Alternative</h4>
 														<p>{taf.mens}</p>
 													</div>
@@ -279,7 +279,7 @@ export function FlightStatus() {
 									</Typography>
 									{flight.aircraft.map((currentAircraft) => {
 										return (
-											<div>
+											<div key={currentAircraft.id}>
 												<p>
 													{`Total Fuel Available: ${currentAircraft.fuelCapacity} liters`}
 												</p>

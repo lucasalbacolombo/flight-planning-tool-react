@@ -16,7 +16,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const ResponsiveUserBar = () => {
+const AircraftsNavbar = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -70,10 +70,10 @@ const ResponsiveUserBar = () => {
 							<MenuItem onClick={handleCloseNavMenu}>
 								<Typography textAlign='center'>
 									<Link
-										to={'/new-flight'}
+										to={'/user-home'}
 										style={{ textDecoration: 'none', color: 'black' }}
 									>
-										NEW FLIGHT
+										HOME
 									</Link>
 								</Typography>
 							</MenuItem>
@@ -90,10 +90,10 @@ const ResponsiveUserBar = () => {
 							<MenuItem onClick={handleCloseNavMenu}>
 								<Typography textAlign='center'>
 									<Link
-										to={'/my-aircrafts'}
+										to={'/new-flight'}
 										style={{ textDecoration: 'none', color: 'black' }}
 									>
-										MY AIRCRAFTS
+										NEW FLIGHT
 									</Link>
 								</Typography>
 							</MenuItem>
@@ -106,10 +106,10 @@ const ResponsiveUserBar = () => {
 							sx={{ my: 2, color: 'white', display: 'block' }}
 						>
 							<Link
-								to={'/new-flight'}
+								to={'/user-home'}
 								style={{ textDecoration: 'none', color: 'white' }}
 							>
-								NEW FLIGHT
+								HOME
 							</Link>
 						</Button>
 						<Button
@@ -128,10 +128,10 @@ const ResponsiveUserBar = () => {
 							sx={{ my: 2, color: 'white', display: 'block' }}
 						>
 							<Link
-								to={'/my-aircrafts'}
+								to={'/new-flight'}
 								style={{ textDecoration: 'none', color: 'white' }}
 							>
-								MY AIRCRAFTS
+								NEW FLIGHT
 							</Link>
 						</Button>
 					</Box>
@@ -174,4 +174,4 @@ const ResponsiveUserBar = () => {
 		</AppBar>
 	);
 };
-export default ResponsiveUserBar;
+export default AircraftsNavbar;
