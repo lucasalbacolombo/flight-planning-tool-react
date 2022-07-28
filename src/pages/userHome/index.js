@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { api } from '../../api/api';
 import { Link } from 'react-router-dom';
 import ResponsiveUserBar from '../../components/userNavbar/index';
-import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -39,25 +38,31 @@ export function UserHome() {
 	) : (
 		<>
 			<ResponsiveUserBar />
-
-			<Grid container spacing={3}>
-				<Grid item xs={12} md={6}>
-					<Stack spacing={2}>
-						<h3 style={{ marginLeft: '20px', marginTop: '25px' }}>
-							My Flights
-						</h3>
-						{flights.map((currentFlight) => {
-							return (
+			<h3 style={{ marginLeft: '10px', marginTop: '25px' }}>My Flights</h3>
+			<Box sx={{ flexGrow: 1 }} direction='row'>
+				<Grid
+					container
+					spacing={2}
+					direction='row'
+					justifyContent='center'
+					alignItems='center'
+				>
+					{flights.map((currentFlight) => {
+						return (
+							<Grid item xs={12} sm={6} key={currentFlight._id}>
 								<Card
-									sx={{ minWidth: 275, margin: '25px' }}
-									key={currentFlight._id}
+									sx={{
+										minWidth: 275,
+										margin: '10px',
+										backgroundColor: 'rgb(248, 247, 247)',
+									}}
 								>
 									<CardContent>
 										<Typography sx={{ minWidth: 275 }}>
-											Date: {currentFlight.date}
+											<strong>Date</strong>: {currentFlight.date}
 										</Typography>
 										<Typography sx={{ mb: 1.5 }}>
-											EOBT: {currentFlight.eobt}
+											<strong>EOBT</strong>: {currentFlight.eobt}
 										</Typography>
 										<Typography variant='body2'>
 											DEP: {currentFlight.departure}
@@ -97,11 +102,11 @@ export function UserHome() {
 										</Link>
 									</CardActions>
 								</Card>
-							);
-						})}
-					</Stack>
+							</Grid>
+						);
+					})}
 				</Grid>
-			</Grid>
+			</Box>
 		</>
 	);
 }

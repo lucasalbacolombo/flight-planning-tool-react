@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { api } from '../../api/api';
 import axios from 'axios';
 import EditNavbar from '../../components/editNavbar/index';
-import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -66,220 +65,229 @@ export function FlightStatus() {
 	) : (
 		<>
 			<EditNavbar />
-			<Grid container spacing={3}>
-				<Grid item xs={12}>
-					<Stack spacing={2}>
-						<Card sx={{ maxWidth: 345 }}>
-							<Card>
-								<CardContent>
-									<Typography gutterBottom variant='h5' component='div'>
-										Airport Information
-									</Typography>
-									<div>
-										{flightData.airport
-											.filter((currentAirport) => {
-												return (
-													currentAirport.cod === flightData.flight.departure
-												);
-											})
-											.map((airport) => {
-												return (
-													<div key={airport.id}>
-														<h4>Departure</h4>
-														<ul>
-															<li>Code: {airport.cod}</li>
-															<li>Name: {airport.nome}</li>
-															<li>City: {airport.cidade}</li>
-															<li>Elevation: {airport.altitude_pes}ft</li>
-														</ul>
-													</div>
-												);
-											})}
-										{flightData.airport
-											.filter((currentAirport) => {
-												return currentAirport.cod === flightData.flight.arrival;
-											})
-											.map((airport) => {
-												return (
-													<div key={airport.id}>
-														<h4>Arrival</h4>
-														<ul>
-															<li>Code: {airport.cod}</li>
-															<li>Name: {airport.nome}</li>
-															<li>City: {airport.cidade}</li>
-															<li>Elevation: {airport.altitude_pes}ft</li>
-														</ul>
-													</div>
-												);
-											})}
-
-										{flightData.airport
-											.filter((currentAirport) => {
-												return (
-													currentAirport.cod === flightData.flight.alternative
-												);
-											})
-											.map((airport) => {
-												return (
-													<div key={airport.id}>
-														<h4>Alternative</h4>
-														<ul>
-															<li>Code: {airport.cod}</li>
-															<li>Name: {airport.nome}</li>
-															<li>City: {airport.cidade}</li>
-															<li>Elevation: {airport.altitude_pes}ft</li>
-														</ul>
-													</div>
-												);
-											})}
-									</div>
-								</CardContent>
-							</Card>
-						</Card>
-						<Card sx={{ maxWidth: 345 }}>
-							<Card>
-								<CardContent>
-									<Typography gutterBottom variant='h5' component='div'>
-										METAR
-									</Typography>
-									<div>
-										{flightData.metar
-											.filter((currentMetar) => {
-												return (
-													currentMetar.id_localidade ===
-													flightData.flight.departure
-												);
-											})
-											.map((metar) => {
-												return (
-													<div key={metar.id}>
-														<h4>Departure</h4>
-														<p>{metar.mens}</p>
-													</div>
-												);
-											})}
-									</div>
-									<div>
-										{flightData.metar
-											.filter((currentMetar) => {
-												return (
-													currentMetar.id_localidade ===
-													flightData.flight.arrival
-												);
-											})
-											.map((metar) => {
-												return (
-													<div key={metar.id}>
-														<h4>Arrival</h4>
-														<p>{metar.mens}</p>
-													</div>
-												);
-											})}
-									</div>
-									<div>
-										{flightData.metar
-											.filter((currentMetar) => {
-												return (
-													currentMetar.id_localidade ===
-													flightData.flight.alternative
-												);
-											})
-											.map((metar) => {
-												return (
-													<div key={metar.id}>
-														<h4>Alternative</h4>
-														<p>{metar.mens}</p>
-													</div>
-												);
-											})}
-									</div>
-								</CardContent>
-							</Card>
-						</Card>
-						<Card sx={{ maxWidth: 345 }}>
-							<Card>
-								<CardContent>
-									<Typography gutterBottom variant='h5' component='div'>
-										TAF
-									</Typography>
-									<div>
-										{flightData.taf
-											.filter((currentTaf) => {
-												return (
-													currentTaf.id_localidade ===
-													flightData.flight.departure
-												);
-											})
-											.map((taf) => {
-												return (
-													<div key={taf.id}>
-														<h4>Departure</h4>
-														<p>{taf.mens}</p>
-													</div>
-												);
-											})}
-									</div>
-									<div>
-										{flightData.taf
-											.filter((currentTaf) => {
-												return (
-													currentTaf.id_localidade === flightData.flight.arrival
-												);
-											})
-											.map((taf) => {
-												return (
-													<div key={taf.id}>
-														<h4>Arrival</h4>
-														<p>{taf.mens}</p>
-													</div>
-												);
-											})}
-									</div>
-									<div>
-										{flightData.taf
-											.filter((currentTaf) => {
-												return (
-													currentTaf.id_localidade ===
-													flightData.flight.alternative
-												);
-											})
-											.map((taf) => {
-												return (
-													<div key={taf.id}>
-														<h4>Alternative</h4>
-														<p>{taf.mens}</p>
-													</div>
-												);
-											})}
-									</div>
-								</CardContent>
-							</Card>
-						</Card>
-						<Card sx={{ maxWidth: 345 }}>
-							<Card>
-								<CardContent>
-									<Typography gutterBottom variant='h5' component='div'>
-										Fuel Information
-									</Typography>
-									{flightData.flight.aircraft.map((currentAircraft) => {
+			<h3 style={{ margin: '20px' }}>Flight Status</h3>
+			<Grid
+				container
+				spacing={2}
+				direction='row'
+				justifyContent='center'
+				alignItems='center'
+			>
+				<Grid item xs={11}>
+					<Card sx={{ backgroundColor: 'rgb(248, 247, 247)' }}>
+						<CardContent>
+							<Typography gutterBottom variant='h5' component='div'>
+								<h4>Airport Information</h4>
+							</Typography>
+							<div>
+								{flightData.airport
+									.filter((currentAirport) => {
+										return currentAirport.cod === flightData.flight.departure;
+									})
+									.map((airport) => {
 										return (
-											<div key={currentAircraft.id}>
-												<p>
-													{`Total Fuel Available: ${currentAircraft.fuelCapacity} liters`}
-												</p>
-												<p>
-													Fuel Required:{' '}
-													{currentAircraft.fuelPerHour *
-														(flightData.flight.flightTime / 60)}{' '}
-													liters
-												</p>
+											<div key={airport.id}>
+												<h5>Departure</h5>
+												<ul>
+													<li>Code: {airport.cod}</li>
+													<li>Name: {airport.nome}</li>
+													<li>City: {airport.cidade}</li>
+													<li>Elevation: {airport.altitude_pes}ft</li>
+													<li>
+														Coordinates:{' '}
+														{`${airport.lat_grau}°${airport.lat_min}'${airport.lat_sec}''${airport.lat_dir}   ${airport.lon_grau}°${airport.lon_min}'${airport.lon_sec}''${airport.lon_dir} `}
+													</li>
+												</ul>
 											</div>
 										);
 									})}
-								</CardContent>
-							</Card>
-						</Card>
-					</Stack>
+								{flightData.airport
+									.filter((currentAirport) => {
+										return currentAirport.cod === flightData.flight.arrival;
+									})
+									.map((airport) => {
+										return (
+											<div key={airport.id}>
+												<h5>Arrival</h5>
+												<ul>
+													<li>Code: {airport.cod}</li>
+													<li>Name: {airport.nome}</li>
+													<li>City: {airport.cidade}</li>
+													<li>Elevation: {airport.altitude_pes}ft</li>
+													<li>
+														Coordinates:{' '}
+														{`${airport.lat_grau}°${airport.lat_min}'${airport.lat_sec}''${airport.lat_dir}   ${airport.lon_grau}°${airport.lon_min}'${airport.lon_sec}''${airport.lon_dir} `}
+													</li>
+												</ul>
+											</div>
+										);
+									})}
+
+								{flightData.airport
+									.filter((currentAirport) => {
+										return currentAirport.cod === flightData.flight.alternative;
+									})
+									.map((airport) => {
+										return (
+											<div key={airport.id}>
+												<h5>Alternative</h5>
+												<ul>
+													<li>Code: {airport.cod}</li>
+													<li>Name: {airport.nome}</li>
+													<li>City: {airport.cidade}</li>
+													<li>Elevation: {airport.altitude_pes}ft</li>
+													<li>
+														Coordinates:{' '}
+														{`${airport.lat_grau}°${airport.lat_min}'${airport.lat_sec}''${airport.lat_dir}   ${airport.lon_grau}°${airport.lon_min}'${airport.lon_sec}''${airport.lon_dir} `}
+													</li>
+												</ul>
+											</div>
+										);
+									})}
+							</div>
+						</CardContent>
+					</Card>
+				</Grid>
+				<Grid item xs={11}>
+					<Card sx={{ backgroundColor: 'rgb(248, 247, 247)' }}>
+						<CardContent>
+							<Typography gutterBottom variant='h5' component='div'>
+								METAR
+							</Typography>
+							<div>
+								{flightData.metar
+									.filter((currentMetar) => {
+										return (
+											currentMetar.id_localidade === flightData.flight.departure
+										);
+									})
+									.map((metar) => {
+										return (
+											<div key={metar.id}>
+												<h4>Departure</h4>
+												<p>{metar.mens}</p>
+											</div>
+										);
+									})}
+							</div>
+							<div>
+								{flightData.metar
+									.filter((currentMetar) => {
+										return (
+											currentMetar.id_localidade === flightData.flight.arrival
+										);
+									})
+									.map((metar) => {
+										return (
+											<div key={metar.id}>
+												<h4>Arrival</h4>
+												<p>{metar.mens}</p>
+											</div>
+										);
+									})}
+							</div>
+							<div>
+								{flightData.metar
+									.filter((currentMetar) => {
+										return (
+											currentMetar.id_localidade ===
+											flightData.flight.alternative
+										);
+									})
+									.map((metar) => {
+										return (
+											<div key={metar.id}>
+												<h4>Alternative</h4>
+												<p>{metar.mens}</p>
+											</div>
+										);
+									})}
+							</div>
+						</CardContent>
+					</Card>
+				</Grid>
+				<Grid item xs={11}>
+					<Card sx={{ backgroundColor: 'rgb(248, 247, 247)' }}>
+						<CardContent>
+							<Typography gutterBottom variant='h5' component='div'>
+								TAF
+							</Typography>
+							<div>
+								{flightData.taf
+									.filter((currentTaf) => {
+										return (
+											currentTaf.id_localidade === flightData.flight.departure
+										);
+									})
+									.map((taf) => {
+										return (
+											<div key={taf.id}>
+												<h4>Departure</h4>
+												<p>{taf.mens}</p>
+											</div>
+										);
+									})}
+							</div>
+							<div>
+								{flightData.taf
+									.filter((currentTaf) => {
+										return (
+											currentTaf.id_localidade === flightData.flight.arrival
+										);
+									})
+									.map((taf) => {
+										return (
+											<div key={taf.id}>
+												<h4>Arrival</h4>
+												<p>{taf.mens}</p>
+											</div>
+										);
+									})}
+							</div>
+							<div>
+								{flightData.taf
+									.filter((currentTaf) => {
+										return (
+											currentTaf.id_localidade === flightData.flight.alternative
+										);
+									})
+									.map((taf) => {
+										return (
+											<div key={taf.id}>
+												<h4>Alternative</h4>
+												<p>{taf.mens}</p>
+											</div>
+										);
+									})}
+							</div>
+						</CardContent>
+					</Card>
+				</Grid>
+				<Grid item xs={11}>
+					<Card
+						sx={{ backgroundColor: 'rgb(248, 247, 247)', marginBottom: '20px' }}
+					>
+						<CardContent>
+							<Typography gutterBottom variant='h5' component='div'>
+								Fuel Information
+							</Typography>
+							{flightData.flight.aircraft.map((currentAircraft) => {
+								return (
+									<div key={currentAircraft.id}>
+										<p>
+											{`Total Fuel Available: ${currentAircraft.fuelCapacity} liters`}
+										</p>
+										<p>
+											Fuel Required:{' '}
+											{currentAircraft.fuelPerHour *
+												(flightData.flight.flightTime / 60)}{' '}
+											liters
+										</p>
+									</div>
+								);
+							})}
+						</CardContent>
+					</Card>
 				</Grid>
 			</Grid>
 		</>

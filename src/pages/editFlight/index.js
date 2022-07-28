@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../../api/api';
+import style from './style.module.css';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -9,6 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import LinearProgress from '@mui/material/LinearProgress';
 import EditNavbar from '../../components/editNavbar/index';
 import MenuItem from '@mui/material/MenuItem';
+import Grid from '@mui/material/Grid';
 
 export function EditFlight() {
 	const navigate = useNavigate();
@@ -95,62 +97,77 @@ export function EditFlight() {
 			<EditNavbar />
 			<Box
 				component='form'
-				sx={{
-					'& > :not(style)': { m: 1, width: '25ch' },
-				}}
-				noValidate
-				autoComplete='off'
+				sx={{ marginTop: '15px', '& > :not(style)': { mt: 1, width: '100%' } }}
 				onSubmit={handleSubmit}
 			>
-				<TextField
-					id='date'
-					name='date'
-					value={form.date}
-					onChange={handleChange}
-					label='Date'
-					variant='outlined'
-				/>
-				<TextField
-					id='eobt'
-					name='eobt'
-					value={form.eobt}
-					onChange={handleChange}
-					label='EOBT'
-					variant='outlined'
-				/>
-				<TextField
-					id='departure'
-					name='departure'
-					value={form.departure}
-					onChange={handleChange}
-					label='Departure'
-					variant='outlined'
-				/>
-				<TextField
-					id='arrival'
-					name='arrival'
-					value={form.arrival}
-					onChange={handleChange}
-					label='Arrival'
-					variant='outlined'
-				/>
-				<TextField
-					id='alternative'
-					name='alternative'
-					value={form.alternative}
-					onChange={handleChange}
-					label='Alternative'
-					variant='outlined'
-				/>
-				<TextField
-					id='distance'
-					name='distance'
-					value={form.distance}
-					onChange={handleChange}
-					label='Distance'
-					variant='outlined'
-				/>
-				<div>
+				<Grid
+					container
+					direction='column'
+					justifyContent='center'
+					alignItems='center'
+					sx={{ width: '100%' }}
+				>
+					<TextField
+						id='date'
+						name='date'
+						value={form.date}
+						onChange={handleChange}
+						label='Date'
+						variant='outlined'
+						sx={{ marginBottom: '20px', marginTop: '20px', width: '40%' }}
+						className={style.input}
+					/>
+					<TextField
+						id='eobt'
+						name='eobt'
+						value={form.eobt}
+						onChange={handleChange}
+						label='EOBT'
+						variant='outlined'
+						sx={{ marginBottom: '20px', width: '40%' }}
+						className={style.input}
+					/>
+					<TextField
+						id='departure'
+						name='departure'
+						value={form.departure}
+						onChange={handleChange}
+						label='Departure'
+						variant='outlined'
+						sx={{ marginBottom: '20px', width: '40%' }}
+						className={style.input}
+					/>
+					<TextField
+						id='arrival'
+						name='arrival'
+						value={form.arrival}
+						onChange={handleChange}
+						label='Arrival'
+						variant='outlined'
+						sx={{ marginBottom: '20px', width: '40%' }}
+						className={style.input}
+					/>
+					<TextField
+						id='alternative'
+						name='alternative'
+						value={form.alternative}
+						onChange={handleChange}
+						label='Alternative'
+						variant='outlined'
+						sx={{ marginBottom: '20px', width: '40%' }}
+						className={style.input}
+					/>
+					<TextField
+						id='distance'
+						name='distance'
+						value={form.distance}
+						onChange={handleChange}
+						label='Distance'
+						variant='outlined'
+						sx={{ marginBottom: '20px', width: '40%' }}
+						className={style.input}
+					/>
+
 					<TextField
 						id='aircraft'
 						name='aircraft'
@@ -158,7 +175,8 @@ export function EditFlight() {
 						label='Aircraft'
 						value={form.aircraft}
 						onChange={handleChange}
-						style={{ width: '200px' }}
+						sx={{ marginBottom: '20px', width: '40%' }}
+						className={style.input}
 					>
 						{aircraft.map((currentAircraft) => {
 							return (
@@ -172,18 +190,26 @@ export function EditFlight() {
 							);
 						})}
 					</TextField>
-				</div>
-				<Button variant='contained' type='submit'>
-					Update Flight
-				</Button>
-				<Button
-					variant='outlined'
-					color='error'
-					startIcon={<DeleteIcon />}
-					onClick={handleDelete}
-				>
-					DELETE Flight
-				</Button>
+
+					<Button
+						variant='contained'
+						type='submit'
+						sx={{ marginBottom: '10px', width: '25%' }}
+						className={style.editBtn}
+					>
+						Update Flight
+					</Button>
+					<Button
+						variant='outlined'
+						color='error'
+						startIcon={<DeleteIcon />}
+						onClick={handleDelete}
+						sx={{ marginBottom: '30px', width: '25%' }}
+						className={style.editBtn}
+					>
+						DELETE Flight
+					</Button>
+				</Grid>
 			</Box>
 		</>
 	);
