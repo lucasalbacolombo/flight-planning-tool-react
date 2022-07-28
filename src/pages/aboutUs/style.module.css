@@ -10,17 +10,18 @@
 	border-radius: 49%;
 }
 
-@media (max-width: 630px) {
+@media (max-width: 750px) {
 	.flex {
 		display: flex;
 		flex-direction: column !important;
 		flex-wrap: nowrap !important;
+		width: 100%;
 	}
 	.item1 {
-		max-width: 90%;
+		width: 300px;
 	}
 	.item2 {
-		max-width: 90%;
+		width: 100%;
 	}
 	.socialMedia {
 		display: flex;

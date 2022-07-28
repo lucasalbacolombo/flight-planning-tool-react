@@ -10,7 +10,6 @@ import { Login } from './pages/login';
 import { SignUp } from './pages/signUp';
 import { UserHome } from './pages/userHome';
 import { AboutUs } from './pages/aboutUs';
-import { Solution } from './pages/solutions';
 import { NewAircraft } from './pages/newAircraft/index';
 import { EditAircraft } from './pages/editAircraft/index';
 import { MyAircrafts } from './pages/myAircrafts/index';
@@ -25,7 +24,6 @@ function App() {
 					<Route path='/signup' element={<SignUp />} />
 					<Route path='/login' element={<Login />} />
 					<Route path='/aboutus' element={<AboutUs />} />
-					<Route path='/solution' element={<Solution />} />
 					<Route
 						path='/flight-status/:id'
 						element={<ProtectedRoute component={FlightStatus} />}

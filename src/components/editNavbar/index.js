@@ -35,14 +35,18 @@ const EditNavbar = () => {
 		<AppBar position='static' className={styles.navbar}>
 			<Container maxWidth='xl'>
 				<Toolbar disableGutters>
-					<ExploreIcon
-						sx={{
-							display: { xs: 'none', md: 'flex' },
-							mr: 1,
-							fontSize: '40px',
-						}}
-					/>
-
+					<Link
+						to={'/user-home'}
+						style={{ textDecoration: 'none', color: 'white' }}
+					>
+						<ExploreIcon
+							sx={{
+								display: { xs: 'none', md: 'flex' },
+								mr: 1,
+								fontSize: '40px',
+							}}
+						/>
+					</Link>
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton
 							size='large'
@@ -84,13 +88,19 @@ const EditNavbar = () => {
 							</MenuItem>
 						</Menu>
 					</Box>
-					<ExploreIcon
-						sx={{
-							display: { xs: 'flex', md: 'none' },
-							mr: 1,
-							fontSize: '35px',
-						}}
-					/>
+
+					<Link
+						to={'/user-home'}
+						style={{ textDecoration: 'none', color: 'white' }}
+					>
+						<ExploreIcon
+							sx={{
+								display: { xs: 'flex', md: 'none' },
+								mr: 1,
+								fontSize: '35px',
+							}}
+						/>
+					</Link>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						<Button
 							onClick={handleCloseNavMenu}

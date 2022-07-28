@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../api/api';
+import style from './style.module.css';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import FlightIcon from '@mui/icons-material/Flight';
+import Grid from '@mui/material/Grid';
 import EditNavbar from '../../components/editNavbar/index';
 
 export function NewAircraft() {
@@ -39,64 +41,80 @@ export function NewAircraft() {
 			<EditNavbar />
 			<Box
 				component='form'
-				sx={{
-					'& > :not(style)': { m: 1, width: '25ch' },
-				}}
-				noValidate
-				autoComplete='off'
+				sx={{ marginTop: '15px', '& > :not(style)': { mt: 1, width: '100%' } }}
 				onSubmit={handleSubmit}
 			>
-				<TextField
-					id='registration'
-					name='registration'
-					value={form.registration}
-					onChange={handleChange}
-					label='Registration'
-					variant='outlined'
-				/>
-				<TextField
-					id='make'
-					name='make'
-					value={form.make}
-					onChange={handleChange}
-					label='Make'
-					variant='outlined'
-				/>
-				<TextField
-					id='model'
-					name='model'
-					value={form.model}
-					onChange={handleChange}
-					label='Model'
-					variant='outlined'
-				/>
-				<TextField
-					id='icaoCode'
-					name='icaoCode'
-					value={form.icaoCode}
-					onChange={handleChange}
-					label='ICAO Code'
-					variant='outlined'
-				/>
-				<TextField
-					id='fuelPerHour'
-					name='fuelPerHour'
-					value={form.fuelPerHour}
-					onChange={handleChange}
-					label='Fuel Per Hour'
-					variant='outlined'
-				/>
-				<TextField
-					id='fuelCapacity'
-					name='fuelCapacity'
-					value={form.fuelCapacity}
-					onChange={handleChange}
-					label='Fuel Capacity'
-					variant='outlined'
-				/>
-				<Button variant='contained' type='submit'>
-					Add Aircraft <FlightIcon />
-				</Button>
+				<Grid
+					container
+					direction='column'
+					justifyContent='center'
+					alignItems='center'
+					sx={{ width: '100%' }}
+				>
+					<TextField
+						id='registration'
+						name='registration'
+						value={form.registration}
+						onChange={handleChange}
+						label='Registration'
+						variant='outlined'
+						sx={{ marginBottom: '20px', marginTop: '20px', width: '40%' }}
+						className={style.input}
+					/>
+					<TextField
+						id='make'
+						name='make'
+						value={form.make}
+						onChange={handleChange}
+						label='Make'
+						variant='outlined'
+						sx={{ marginBottom: '20px', width: '40%' }}
+						className={style.input}
+					/>
+					<TextField
+						id='model'
+						name='model'
+						value={form.model}
+						onChange={handleChange}
+						label='Model'
+						variant='outlined'
+						sx={{ marginBottom: '20px', width: '40%' }}
+						className={style.input}
+					/>
+					<TextField
+						id='icaoCode'
+						name='icaoCode'
+						value={form.icaoCode}
+						onChange={handleChange}
+						label='ICAO Code'
+						variant='outlined'
+						sx={{ marginBottom: '20px', width: '40%' }}
+						className={style.input}
+					/>
+					<TextField
+						id='fuelPerHour'
+						name='fuelPerHour'
+						value={form.fuelPerHour}
+						onChange={handleChange}
+						label='Fuel Per Hour'
+						variant='outlined'
+						sx={{ marginBottom: '20px', width: '40%' }}
+						className={style.input}
+					/>
+					<TextField
+						id='fuelCapacity'
+						name='fuelCapacity'
+						value={form.fuelCapacity}
+						onChange={handleChange}
+						label='Fuel Capacity'
+						variant='outlined'
+						sx={{ marginBottom: '20px', width: '40%' }}
+						className={style.input}
+					/>
+					<Button variant='contained' type='submit'>
+						Add Aircraft <FlightIcon />
+					</Button>
+				</Grid>
 			</Box>
 		</>
 	);

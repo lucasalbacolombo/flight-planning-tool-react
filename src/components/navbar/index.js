@@ -35,13 +35,15 @@ const ResponsiveAppBar = () => {
 		<AppBar position='static' className={styles.navbar}>
 			<Container maxWidth='xl'>
 				<Toolbar disableGutters>
-					<ExploreIcon
-						sx={{
-							display: { xs: 'none', md: 'flex' },
-							mr: 1,
-							fontSize: '40px',
-						}}
-					/>
+					<Link to={'/'} style={{ textDecoration: 'none', color: 'white' }}>
+						<ExploreIcon
+							sx={{
+								display: { xs: 'none', md: 'flex' },
+								mr: 1,
+								fontSize: '40px',
+							}}
+						/>
+					</Link>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton
@@ -75,16 +77,6 @@ const ResponsiveAppBar = () => {
 							<MenuItem onClick={handleCloseNavMenu}>
 								<Typography textAlign='center'>
 									<Link
-										to={'/solution'}
-										style={{ textDecoration: 'none', color: 'black' }}
-									>
-										SOLUTION
-									</Link>
-								</Typography>
-							</MenuItem>
-							<MenuItem onClick={handleCloseNavMenu}>
-								<Typography textAlign='center'>
-									<Link
 										to={'/aboutus'}
 										style={{ textDecoration: 'none', color: 'black' }}
 									>
@@ -94,26 +86,17 @@ const ResponsiveAppBar = () => {
 							</MenuItem>
 						</Menu>
 					</Box>
-					<ExploreIcon
-						sx={{
-							display: { xs: 'flex', md: 'none' },
-							mr: 1,
 
-							fontSize: '35px',
-						}}
-					/>
+					<Link to={'/'} style={{ textDecoration: 'none', color: 'white' }}>
+						<ExploreIcon
+							sx={{
+								display: { xs: 'flex', md: 'none' },
+								mr: 1,
+								fontSize: '35px',
+							}}
+						/>
+					</Link>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-						<Button
-							onClick={handleCloseNavMenu}
-							sx={{ my: 2, color: 'white', display: 'block' }}
-						>
-							<Link
-								to={'/solution'}
-								style={{ textDecoration: 'none', color: 'white' }}
-							>
-								SOLUTION
-							</Link>
-						</Button>
 						<Button
 							onClick={handleCloseNavMenu}
 							sx={{ my: 2, color: 'white', display: 'block' }}

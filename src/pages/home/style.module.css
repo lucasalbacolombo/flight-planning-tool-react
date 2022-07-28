@@ -1,7 +1,7 @@
 @media (max-width: 630px) {
 	.query {
 		display: flex;
-		flex-direction: column;
+		flex-direction: column !important;
 	}
 	.grid1 {
 		display: flex;
@@ -13,5 +13,7 @@
 	}
 	.grid2 {
 		max-width: 80% !important;
+		display: flex;
+		align-items: center;
 	}
 }

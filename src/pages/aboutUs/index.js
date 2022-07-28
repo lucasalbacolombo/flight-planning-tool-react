@@ -5,7 +5,6 @@ import Grid from '@mui/material/Grid';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import Profile from '../../images/profile.png';
-import Footer from '../../components/footer/index';
 
 export function AboutUs() {
 	return (
@@ -23,9 +22,10 @@ export function AboutUs() {
 						direction='row'
 						justifyContent='center'
 						alignItems='center'
+						alignContent='center'
 						className={style.flex}
 					>
-						<Grid item xs={6} className={style.item1}>
+						<Grid item xs={12} sm={6} className={style.item1}>
 							<h2>Lucas Alba Colombo</h2>
 							<p>
 								Full Stack Developer graduated from Ironhack's Web Developer
@@ -48,7 +48,8 @@ export function AboutUs() {
 						</Grid>
 						<Grid
 							item
-							xs={6}
+							xs={12}
+							sm={6}
 							container
 							spacing={2}
 							direction='row'
@@ -61,7 +62,6 @@ export function AboutUs() {
 					</Grid>
 				</Box>
 			</div>
-			<Footer></Footer>
 		</>
 	);
 }
