@@ -41,7 +41,7 @@ export function UserHome() {
 			<ResponsiveUserBar />
 
 			<Grid container spacing={3}>
-				<Grid item xs={10}>
+				<Grid item xs={12} md={6}>
 					<Stack spacing={2}>
 						<h3 style={{ marginLeft: '20px', marginTop: '25px' }}>
 							My Flights
