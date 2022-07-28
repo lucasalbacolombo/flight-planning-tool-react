@@ -4,7 +4,9 @@ import { api } from '../../api/api';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
+import ExploreIcon from '@mui/icons-material/Explore';
 import Button from '@mui/material/Button';
+import { Toaster, toast } from 'react-hot-toast';
 import style from './style.module.css';
 import ResponsiveAppBar from '../../components/navbar/index';
 import Footer from '../../components/footer/index';
@@ -28,12 +30,11 @@ export function SignUp() {
 
 		try {
 			if (form.password !== form.passwordConfirmation) {
-				//toast aqui
+				toast.error('Wrong Password Confirmation');
 				return;
 			}
 
 			await api.post('/user/signup', form);
-			//toast aqui
 
 			navigate('/login');
 		} catch (error) {
@@ -43,6 +44,7 @@ export function SignUp() {
 
 	return (
 		<>
+			<Toaster />
 			<ResponsiveAppBar></ResponsiveAppBar>
 			<Box
 				container
@@ -51,7 +53,7 @@ export function SignUp() {
 				alignItems='center'
 				sx={{
 					display: 'flex',
-					height: '100vh',
+					height: '85vh',
 					justifyContent: 'center',
 					flexWrap: 'wrap',
 					'& > :not(style)': {
@@ -63,14 +65,16 @@ export function SignUp() {
 			>
 				<Paper elevation={3}>
 					<form onSubmit={handleSubmit} className={style.form}>
+						<ExploreIcon sx={{ fontSize: 60, marginBottom: '15px' }} />
 						<TextField
 							id='name'
 							name='name'
 							value={form.name}
 							onChange={handleChange}
 							label='Name'
-							style={{ marginBottom: '15px' }}
 							variant='outlined'
+							sx={{ width: '80%', marginBottom: '15px' }}
+							required
 						/>
 						<TextField
 							id='email'
@@ -78,8 +82,9 @@ export function SignUp() {
 							value={form.email}
 							onChange={handleChange}
 							label='E-mail'
-							style={{ marginBottom: '15px' }}
 							variant='outlined'
+							sx={{ width: '80%', marginBottom: '15px' }}
+							required
 						/>
 						<TextField
 							id='password'
@@ -88,8 +93,9 @@ export function SignUp() {
 							value={form.password}
 							onChange={handleChange}
 							label='Password'
-							style={{ marginBottom: '15px' }}
 							variant='outlined'
+							sx={{ width: '80%', marginBottom: '15px' }}
+							required
 						/>
 						<TextField
 							id='passwordConfirmation'
@@ -98,8 +104,9 @@ export function SignUp() {
 							value={form.passwordConfirmation}
 							onChange={handleChange}
 							label='Confirm Password'
-							style={{ marginBottom: '15px' }}
 							variant='outlined'
+							sx={{ width: '80%', marginBottom: '15px' }}
+							required
 						/>
 						<Button variant='contained' type='submit'>
 							SignUp

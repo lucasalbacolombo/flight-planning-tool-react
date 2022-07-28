@@ -1,0 +1,17 @@
+@media (max-width: 630px) {
+	.query {
+		display: flex;
+		flex-direction: column;
+	}
+	.grid1 {
+		display: flex;
+		align-content: center;
+		max-width: 80% !important;
+	}
+	.icon {
+		font-size: 170px !important;
+	}
+	.grid2 {
+		max-width: 80% !important;
+	}
+}

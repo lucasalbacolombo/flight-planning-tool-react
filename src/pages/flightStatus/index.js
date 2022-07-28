@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { api } from '../../api/api';
-import WindyInit from '../../components/windyAPI/index';
 import axios from 'axios';
 import EditNavbar from '../../components/editNavbar/index';
 import Stack from '@mui/material/Stack';
@@ -16,85 +15,49 @@ import LinearProgress from '@mui/material/LinearProgress';
 export function FlightStatus() {
 	const { id } = useParams();
 
-	const [flight, setFlight] = useState([]);
-
-	const [airport, setAirport] = useState([]);
-
-	const [metar, setMetar] = useState([]);
-
-	const [taf, setTaf] = useState([]);
-
-	const [windy, setWindy] = useState([]);
-
 	const [loading, setLoading] = useState(true);
 
-	useEffect(() => {
-		async function fetchFlight() {
-			try {
-				const response = await api.get(`flight/${id}`);
-				setFlight(response.data);
-				setLoading(false);
-			} catch (error) {
-				console.log(error);
-			}
-		}
-
-		fetchFlight();
-	}, []);
+	const [flightData, setFlightData] = useState({
+		flight: {},
+		airport: [],
+		metar: [],
+		taf: [],
+	});
 
 	useEffect(() => {
-		async function fetchAirport() {
+		async function fetchData() {
 			try {
-				const response = await axios.get(
+				const { data: flight } = await api.get(`flight/${id}`);
+				const {
+					data: { data: airport },
+				} = await axios.get(
 					`https://api-redemet.decea.mil.br/aerodromos/?api_key=${process.env.REACT_APP_REDEMET}&pais=Brasil`
 				);
-
-				setAirport([...response.data.data]);
-				setLoading(false);
-			} catch (error) {
-				console.log(error);
-			}
-		}
-
-		fetchAirport();
-	}, []);
-
-	useEffect(() => {
-		async function fetchMetar() {
-			try {
-				const response = await axios.get(
+				const {
+					data: {
+						data: { data: metar },
+					},
+				} = await axios.get(
 					`https://api-redemet.decea.mil.br/mensagens/metar/${flight.departure},${flight.arrival},${flight.alternative}?api_key=${process.env.REACT_APP_REDEMET}`
 				);
 
-				setMetar(response.data.data.data);
-				setLoading(false);
-			} catch (error) {
-				console.log(error);
-			}
-		}
-
-		fetchMetar();
-	}, []);
-
-	useEffect(() => {
-		async function fetchTaf() {
-			try {
-				const response = await axios.get(
+				const {
+					data: {
+						data: { data: taf },
+					},
+				} = await axios.get(
 					`https://api-redemet.decea.mil.br/mensagens/taf/${flight.departure},${flight.arrival},${flight.alternative}?api_key=${process.env.REACT_APP_REDEMET}`
 				);
 
-				setTaf(response.data.data.data);
+				setFlightData({ flight, airport, metar, taf });
 				setLoading(false);
 			} catch (error) {
 				console.log(error);
 			}
 		}
 
-		fetchTaf();
-	}, []);
-
-	console.log(metar);
-	console.log(taf);
+		fetchData();
+	}, [id]);
 
 	return loading ? (
 		<Box sx={{ width: '100%' }}>
@@ -113,9 +76,11 @@ export function FlightStatus() {
 										Airport Information
 									</Typography>
 									<div>
-										{airport
+										{flightData.airport
 											.filter((currentAirport) => {
-												return currentAirport.cod === flight.departure;
+												return (
+													currentAirport.cod === flightData.flight.departure
+												);
 											})
 											.map((airport) => {
 												return (
@@ -130,9 +95,9 @@ export function FlightStatus() {
 													</div>
 												);
 											})}
-										{airport
+										{flightData.airport
 											.filter((currentAirport) => {
-												return currentAirport.cod === flight.arrival;
+												return currentAirport.cod === flightData.flight.arrival;
 											})
 											.map((airport) => {
 												return (
@@ -148,9 +113,11 @@ export function FlightStatus() {
 												);
 											})}
 
-										{airport
+										{flightData.airport
 											.filter((currentAirport) => {
-												return currentAirport.cod === flight.alternative;
+												return (
+													currentAirport.cod === flightData.flight.alternative
+												);
 											})
 											.map((airport) => {
 												return (
@@ -176,9 +143,12 @@ export function FlightStatus() {
 										METAR
 									</Typography>
 									<div>
-										{metar
+										{flightData.metar
 											.filter((currentMetar) => {
-												return currentMetar.id_localidade === flight.departure;
+												return (
+													currentMetar.id_localidade ===
+													flightData.flight.departure
+												);
 											})
 											.map((metar) => {
 												return (
@@ -190,9 +160,12 @@ export function FlightStatus() {
 											})}
 									</div>
 									<div>
-										{metar
+										{flightData.metar
 											.filter((currentMetar) => {
-												return currentMetar.id_localidade === flight.arrival;
+												return (
+													currentMetar.id_localidade ===
+													flightData.flight.arrival
+												);
 											})
 											.map((metar) => {
 												return (
@@ -204,10 +177,11 @@ export function FlightStatus() {
 											})}
 									</div>
 									<div>
-										{metar
+										{flightData.metar
 											.filter((currentMetar) => {
 												return (
-													currentMetar.id_localidade === flight.alternative
+													currentMetar.id_localidade ===
+													flightData.flight.alternative
 												);
 											})
 											.map((metar) => {
@@ -229,9 +203,12 @@ export function FlightStatus() {
 										TAF
 									</Typography>
 									<div>
-										{taf
+										{flightData.taf
 											.filter((currentTaf) => {
-												return currentTaf.id_localidade === flight.departure;
+												return (
+													currentTaf.id_localidade ===
+													flightData.flight.departure
+												);
 											})
 											.map((taf) => {
 												return (
@@ -243,9 +220,11 @@ export function FlightStatus() {
 											})}
 									</div>
 									<div>
-										{taf
+										{flightData.taf
 											.filter((currentTaf) => {
-												return currentTaf.id_localidade === flight.arrival;
+												return (
+													currentTaf.id_localidade === flightData.flight.arrival
+												);
 											})
 											.map((taf) => {
 												return (
@@ -257,9 +236,12 @@ export function FlightStatus() {
 											})}
 									</div>
 									<div>
-										{taf
+										{flightData.taf
 											.filter((currentTaf) => {
-												return currentTaf.id_localidade === flight.alternative;
+												return (
+													currentTaf.id_localidade ===
+													flightData.flight.alternative
+												);
 											})
 											.map((taf) => {
 												return (
@@ -279,7 +261,7 @@ export function FlightStatus() {
 									<Typography gutterBottom variant='h5' component='div'>
 										Fuel Information
 									</Typography>
-									{flight.aircraft.map((currentAircraft) => {
+									{flightData.flight.aircraft.map((currentAircraft) => {
 										return (
 											<div key={currentAircraft.id}>
 												<p>
@@ -288,7 +270,7 @@ export function FlightStatus() {
 												<p>
 													Fuel Required:{' '}
 													{currentAircraft.fuelPerHour *
-														(flight.flightTime / 60)}{' '}
+														(flightData.flight.flightTime / 60)}{' '}
 													liters
 												</p>
 											</div>
@@ -298,10 +280,6 @@ export function FlightStatus() {
 							</Card>
 						</Card>
 					</Stack>
-				</Grid>
-				<Grid item>
-					<div id='windy' style={{ width: '100%', height: '300px' }}></div>
-					<WindyInit></WindyInit>
 				</Grid>
 			</Grid>
 		</>

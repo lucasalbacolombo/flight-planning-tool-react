@@ -23,8 +23,9 @@ export function AboutUs() {
 						direction='row'
 						justifyContent='center'
 						alignItems='center'
+						className={style.flex}
 					>
-						<Grid item xs={6}>
+						<Grid item xs={6} className={style.item1}>
 							<h2>Lucas Alba Colombo</h2>
 							<p>
 								Full Stack Developer graduated from Ironhack's Web Developer
@@ -33,15 +34,15 @@ export function AboutUs() {
 							</p>
 							<p>
 								Airplane Commercial Pilot, certified flight instructor, and
-								aviation safety specialist with experience in light airplanes
-								and flight instruction.
+								aviation safety specialist. Flying experience in single and
+								twin-engine airplanes and flight instruction.
 							</p>
-							<div>
+							<div className={style.socialMedia}>
 								<a href='https://www.linkedin.com/in/lucas-alba-colombo/'>
-									<LinkedInIcon sx={{ fontSize: 55, color: 'black' }} />
+									<LinkedInIcon sx={{ fontSize: 55, color: '#002344' }} />
 								</a>
 								<a href='https://github.com/lucasalbacolombo'>
-									<GitHubIcon sx={{ fontSize: 50, color: 'black' }} />
+									<GitHubIcon sx={{ fontSize: 50, color: '#002344' }} />
 								</a>
 							</div>
 						</Grid>
@@ -53,6 +54,7 @@ export function AboutUs() {
 							direction='row'
 							justifyContent='center'
 							alignItems='center'
+							className={style.item2}
 						>
 							<img src={Profile} alt='profile' className={style.img}></img>
 						</Grid>

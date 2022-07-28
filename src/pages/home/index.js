@@ -3,6 +3,7 @@ import { CarouselHome } from '../../components/carousel/index';
 import Footer from '../../components/footer';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import Grid from '@mui/material/Grid';
+import style from './style.module.css';
 
 export function Home() {
 	return (
@@ -16,18 +17,19 @@ export function Home() {
 				justifyContent='space-around'
 				alignItems='center'
 				sx={{
-					height: 450,
+					height: '60vh',
 					backgroundColor: '#F1F5F8',
 				}}
 				style={{ width: '100%' }}
+				className={style.query}
 			>
-				<Grid item xs={3}>
-					<FlightTakeoffIcon sx={{ fontSize: 220 }} />
+				<Grid item xs={3} className={style.grid1}>
+					<FlightTakeoffIcon sx={{ fontSize: 220 }} className={style.icon} />
 				</Grid>
-				<Grid item xs={6} sx={{ textAlign: 'justify' }}>
+				<Grid item xs={6} sx={{ textAlign: 'justify' }} className={style.grid2}>
 					All meteorological information pilots need to plan a safe flight using
 					weather information from the most reliable sources, such as the
-					Brazilian Air Force and Windy.
+					Brazilian Air Force.
 				</Grid>
 			</Grid>
 
