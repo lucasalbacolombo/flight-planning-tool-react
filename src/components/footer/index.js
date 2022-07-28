@@ -15,7 +15,9 @@ const Footer = () => {
 					justifyContent='space-between'
 					alignItems='center'
 				>
-					<span>&copy; Copyright 2022 All rights reserved</span>
+					<span style={{ fontSize: '13px' }}>
+						&copy; Copyright 2022 All rights reserved
+					</span>
 					<ExploreIcon sx={{ fontSize: 40 }}></ExploreIcon>
 				</Grid>
 			</Container>
