@@ -41,12 +41,17 @@ export function UserHome() {
 			<ResponsiveUserBar />
 
 			<Grid container spacing={3}>
-				<Grid item xs={12}>
+				<Grid item xs={10}>
 					<Stack spacing={2}>
-						<h3>My Flights</h3>
+						<h3 style={{ marginLeft: '20px', marginTop: '25px' }}>
+							My Flights
+						</h3>
 						{flights.map((currentFlight) => {
 							return (
-								<Card sx={{ minWidth: 275 }} key={currentFlight._id}>
+								<Card
+									sx={{ minWidth: 275, margin: '25px' }}
+									key={currentFlight._id}
+								>
 									<CardContent>
 										<Typography sx={{ minWidth: 275 }}>
 											Date: {currentFlight.date}
