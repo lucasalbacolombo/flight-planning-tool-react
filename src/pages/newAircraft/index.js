@@ -96,7 +96,7 @@ export function NewAircraft() {
 						name='fuelPerHour'
 						value={form.fuelPerHour}
 						onChange={handleChange}
-						label='Fuel Per Hour'
+						label='Liters Per Hour'
 						variant='outlined'
 						sx={{ marginBottom: '20px', width: '40%' }}
 						className={style.input}
@@ -106,12 +106,16 @@ export function NewAircraft() {
 						name='fuelCapacity'
 						value={form.fuelCapacity}
 						onChange={handleChange}
-						label='Fuel Capacity'
+						label='Fuel Capacity (Liters)'
 						variant='outlined'
 						sx={{ marginBottom: '20px', width: '40%' }}
 						className={style.input}
 					/>
-					<Button variant='contained' type='submit'>
+					<Button
+						variant='contained'
+						type='submit'
+						sx={{ marginBottom: '30px' }}
+					>
 						Add Aircraft <FlightIcon />
 					</Button>
 				</Grid>

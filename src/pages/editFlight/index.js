@@ -24,10 +24,9 @@ export function EditFlight() {
 		arrival: '',
 		alternative: '',
 		distance: '',
+		flightTime: '',
 		aircraft: '',
 	});
-
-	const [flight, setFlight] = useState([]);
 
 	const [aircraft, setAircraft] = useState([]);
 
@@ -51,7 +50,6 @@ export function EditFlight() {
 
 		fetchFlight(id);
 	}, []);
-	console.log(form);
 
 	useEffect(() => {
 		async function fetchAircraft() {
@@ -162,7 +160,17 @@ export function EditFlight() {
 						name='distance'
 						value={form.distance}
 						onChange={handleChange}
-						label='Distance'
+						label='Distance (Nautical Miles)'
+						variant='outlined'
+						sx={{ marginBottom: '20px', width: '40%' }}
+						className={style.input}
+					/>
+					<TextField
+						id='flightTime'
+						name='flightTime'
+						value={form.flightTime}
+						onChange={handleChange}
+						label='Flight Time (Minutes)'
 						variant='outlined'
 						sx={{ marginBottom: '20px', width: '40%' }}
 						className={style.input}

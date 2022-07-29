@@ -163,7 +163,7 @@ export function FlightStatus() {
 									})
 									.map((metar) => {
 										return (
-											<div key={metar.id}>
+											<div key={metar.id_localidade}>
 												<h4>Departure</h4>
 												<p>{metar.mens}</p>
 											</div>
@@ -179,7 +179,7 @@ export function FlightStatus() {
 									})
 									.map((metar) => {
 										return (
-											<div key={metar.id}>
+											<div key={metar.id_localidade}>
 												<h4>Arrival</h4>
 												<p>{metar.mens}</p>
 											</div>
@@ -196,7 +196,7 @@ export function FlightStatus() {
 									})
 									.map((metar) => {
 										return (
-											<div key={metar.id}>
+											<div key={metar.id_localidade}>
 												<h4>Alternative</h4>
 												<p>{metar.mens}</p>
 											</div>
@@ -221,7 +221,7 @@ export function FlightStatus() {
 									})
 									.map((taf) => {
 										return (
-											<div key={taf.id}>
+											<div key={taf.id_localidade}>
 												<h4>Departure</h4>
 												<p>{taf.mens}</p>
 											</div>
@@ -237,7 +237,7 @@ export function FlightStatus() {
 									})
 									.map((taf) => {
 										return (
-											<div key={taf.id}>
+											<div key={taf.id_localidade}>
 												<h4>Arrival</h4>
 												<p>{taf.mens}</p>
 											</div>
@@ -253,7 +253,7 @@ export function FlightStatus() {
 									})
 									.map((taf) => {
 										return (
-											<div key={taf.id}>
+											<div key={taf.id_localidade}>
 												<h4>Alternative</h4>
 												<p>{taf.mens}</p>
 											</div>

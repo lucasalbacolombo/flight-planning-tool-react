@@ -134,7 +134,17 @@ export function NewFlight() {
 						name='distance'
 						value={form.distance}
 						onChange={handleChange}
-						label='Distance'
+						label='Distance (Nautical Miles)'
+						variant='outlined'
+						sx={{ marginBottom: '20px', width: '40%' }}
+						className={style.input}
+					/>
+					<TextField
+						id='flightTime'
+						name='flightTime'
+						value={form.flightTime}
+						onChange={handleChange}
+						label='Flight Time (Minutes)'
 						variant='outlined'
 						sx={{ marginBottom: '20px', width: '40%' }}
 						className={style.input}
@@ -162,7 +172,11 @@ export function NewFlight() {
 							);
 						})}
 					</TextField>
-					<Button variant='contained' type='submit'>
+					<Button
+						sx={{ marginBottom: '30px' }}
+						variant='contained'
+						type='submit'
+					>
 						Create Flight <FlightTakeoffIcon />
 					</Button>
 				</Grid>

@@ -48,7 +48,7 @@ export function MyAircrafts() {
 			>
 				{aircrafts.map((currentAircraft) => {
 					return (
-						<Grid item xs={12} sm={6}>
+						<Grid item xs={12} sm={6} key={currentAircraft._id}>
 							<Card
 								sx={{
 									minWidth: 275,

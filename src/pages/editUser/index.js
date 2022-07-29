@@ -91,7 +91,7 @@ export function EditUser() {
 						<TextField
 							id='name'
 							name='name'
-							value={form.name}
+							value={form.name || ''}
 							onChange={handleChange}
 							label='Name'
 							variant='outlined'
@@ -101,7 +101,7 @@ export function EditUser() {
 						<TextField
 							id='email'
 							name='email'
-							value={form.email}
+							value={form.email || ''}
 							onChange={handleChange}
 							label='E-mail'
 							variant='outlined'
@@ -112,7 +112,7 @@ export function EditUser() {
 							id='password'
 							type='password'
 							name='password'
-							value={form.password}
+							value={form.password || ''}
 							onChange={handleChange}
 							label='Password'
 							variant='outlined'
@@ -123,7 +123,7 @@ export function EditUser() {
 							id='passwordConfirmation'
 							type='password'
 							name='passwordConfirmation'
-							value={form.passwordConfirmation}
+							value={form.passwordConfirmation || ''}
 							onChange={handleChange}
 							label='Confirm Password'
 							variant='outlined'

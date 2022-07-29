@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styles from './style.module.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -30,6 +31,13 @@ const ResponsiveUserBar = () => {
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
 	};
+
+	const navigate = useNavigate();
+
+	function handleLogOut() {
+		localStorage.removeItem('loggedInUser');
+		navigate('/');
+	}
 
 	return (
 		<AppBar position='static' className={styles.navbar}>
@@ -187,8 +195,10 @@ const ResponsiveUserBar = () => {
 					>
 						<Button color='inherit'>Account</Button>
 					</Link>
-					<Link to='' style={{ textDecoration: 'none', color: 'white' }}>
-						<Button color='inherit'>Logout</Button>
+					<Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
+						<Button color='inherit' onClick={handleLogOut}>
+							Logout
+						</Button>
 					</Link>
 				</Toolbar>
 			</Container>

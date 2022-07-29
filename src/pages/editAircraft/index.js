@@ -132,7 +132,7 @@ export function EditAircraft() {
 						name='fuelPerHour'
 						value={form.fuelPerHour}
 						onChange={handleChange}
-						label='Fuel Per Hour'
+						label='Liters Per Hour'
 						variant='outlined'
 						sx={{ marginBottom: '20px', width: '40%' }}
 						className={style.input}
@@ -142,7 +142,7 @@ export function EditAircraft() {
 						name='fuelCapacity'
 						value={form.fuelCapacity}
 						onChange={handleChange}
-						label='Fuel Capacity'
+						label='Fuel Capacity (Liters)'
 						variant='outlined'
 						sx={{ marginBottom: '20px', width: '40%' }}
 						className={style.input}
@@ -160,7 +160,7 @@ export function EditAircraft() {
 						color='error'
 						startIcon={<DeleteIcon />}
 						onClick={handleDelete}
-						sx={{ marginBottom: '10px', width: '20%' }}
+						sx={{ marginBottom: '30px', width: '20%' }}
 						className={style.editBtn}
 					>
 						DELETE Aircraft
