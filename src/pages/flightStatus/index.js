@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
+// import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { api } from '../../api/api';
 import axios from 'axios';
@@ -10,6 +11,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
+// import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 
 export function FlightStatus() {
 	const { id } = useParams();
@@ -58,6 +60,13 @@ export function FlightStatus() {
 		fetchData();
 	}, [id]);
 
+	// const { isLoaded } = useLoadScript({
+	// 	googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
+	// });
+
+	// if (!isLoaded) {
+	// 	return <div>Loading...</div>;
+	// } else {
 	return loading ? (
 		<Box sx={{ width: '100%' }}>
 			<LinearProgress />
@@ -66,6 +75,7 @@ export function FlightStatus() {
 		<>
 			<EditNavbar />
 			<h3 style={{ margin: '20px' }}>Flight Status</h3>
+
 			<Grid
 				container
 				spacing={2}
@@ -74,7 +84,7 @@ export function FlightStatus() {
 				alignItems='center'
 			>
 				<Grid item xs={11}>
-					<Card sx={{ backgroundColor: 'rgb(248, 247, 247)' }}>
+					<Card sx={{ backgroundColor: 'rgb(238, 241, 253)' }}>
 						<CardContent>
 							<Typography gutterBottom variant='h5' component='div'>
 								<h4>Airport Information</h4>
@@ -149,7 +159,7 @@ export function FlightStatus() {
 					</Card>
 				</Grid>
 				<Grid item xs={11}>
-					<Card sx={{ backgroundColor: 'rgb(248, 247, 247)' }}>
+					<Card sx={{ backgroundColor: 'rgb(238, 241, 253)' }}>
 						<CardContent>
 							<Typography gutterBottom variant='h5' component='div'>
 								METAR
@@ -207,7 +217,7 @@ export function FlightStatus() {
 					</Card>
 				</Grid>
 				<Grid item xs={11}>
-					<Card sx={{ backgroundColor: 'rgb(248, 247, 247)' }}>
+					<Card sx={{ backgroundColor: 'rgb(238, 241, 253)' }}>
 						<CardContent>
 							<Typography gutterBottom variant='h5' component='div'>
 								TAF
@@ -265,7 +275,10 @@ export function FlightStatus() {
 				</Grid>
 				<Grid item xs={11}>
 					<Card
-						sx={{ backgroundColor: 'rgb(248, 247, 247)', marginBottom: '20px' }}
+						sx={{
+							backgroundColor: 'rgb(238, 241, 253)',
+							marginBottom: '20px',
+						}}
 					>
 						<CardContent>
 							<Typography gutterBottom variant='h5' component='div'>
@@ -290,6 +303,15 @@ export function FlightStatus() {
 					</Card>
 				</Grid>
 			</Grid>
+			{/* <GoogleMap
+					zoom={10}
+					center={{ lat: 44, lng: -80 }}
+					mapContainerClassName='map-container'
+					s
+					tyle={{ width: '100%', height: '50vh' }}
+				>
+					<Marker position={{ lat: 44, lng: -80 }} />
+				</GoogleMap> */}
 		</>
 	);
 }

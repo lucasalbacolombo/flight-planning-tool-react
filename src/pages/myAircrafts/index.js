@@ -52,7 +52,7 @@ export function MyAircrafts() {
 							<Card
 								sx={{
 									minWidth: 275,
-									backgroundColor: 'rgb(248, 247, 247)',
+									backgroundColor: 'rgb(242, 244, 250)',
 									margin: '10px',
 								}}
 								key={currentAircraft._id}

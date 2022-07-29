@@ -54,7 +54,7 @@ export function UserHome() {
 									sx={{
 										minWidth: 275,
 										margin: '10px',
-										backgroundColor: 'rgb(248, 247, 247)',
+										backgroundColor: 'rgb(242, 244, 250)',
 									}}
 								>
 									<CardContent>

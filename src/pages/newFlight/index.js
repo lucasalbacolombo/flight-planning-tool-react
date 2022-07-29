@@ -23,7 +23,7 @@ export function NewFlight() {
 		alternative: '',
 		distance: '',
 		flightTime: '',
-		aircraft: '',
+		aircraft: [],
 	});
 
 	const [aircraft, setAircraft] = useState();
