@@ -144,6 +144,29 @@ export function FlightStatus() {
         justifyContent='center'
         alignItems='center'
       >
+        <Grid item xs={11} style={{ marginBottom: "20px" }}>
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={departurePosition}
+            zoom={mapZoom}
+            onLoad={onLoad}
+            onUnmount={onUnmount}
+            mapTypeId='terrain'
+          >
+            <Marker
+              position={departurePosition}
+              options={{
+                label: { text: "A", className: style.marker },
+              }}
+            />
+            <Marker
+              position={arrivalPosition}
+              options={{
+                label: { text: "B", className: style.marker },
+              }}
+            />
+          </GoogleMap>
+        </Grid>
         <Grid item xs={11}>
           <Card sx={{ backgroundColor: "rgb(238, 241, 253)" }}>
             <CardContent>
@@ -362,29 +385,6 @@ export function FlightStatus() {
               })}
             </CardContent>
           </Card>
-        </Grid>
-        <Grid item xs={11} style={{ marginBottom: "40px" }}>
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={departurePosition}
-            zoom={mapZoom}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
-            mapTypeId='terrain'
-          >
-            <Marker
-              position={departurePosition}
-              options={{
-                label: { text: "A", className: style.marker },
-              }}
-            />
-            <Marker
-              position={arrivalPosition}
-              options={{
-                label: { text: "B", className: style.marker },
-              }}
-            />
-          </GoogleMap>
         </Grid>
       </Grid>
     </>
