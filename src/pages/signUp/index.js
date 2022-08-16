@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../api/api';
 import Box from '@mui/material/Box';
@@ -12,109 +13,151 @@ import ResponsiveAppBar from '../../components/navbar/index';
 import Footer from '../../components/footer/index';
 
 export function SignUp() {
-	const [form, setForm] = useState({
-		name: '',
-		email: '',
-		password: '',
-		passwordConfirmation: '',
-	});
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+  });
 
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	function handleChange(e) {
-		setForm({ ...form, [e.target.name]: e.target.value });
-	}
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
-	async function handleSubmit(e) {
-		e.preventDefault();
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
 
-		try {
-			if (form.password !== form.passwordConfirmation) {
-				toast.error('Wrong Password Confirmation');
-				return;
-			}
+  async function submitFunction(e) {
+    try {
+      if (form.password !== form.passwordConfirmation) {
+        toast.error('Wrong Password Confirmation');
+        return;
+      }
 
-			await api.post('/user/signup', form);
+      await api.post('/user/signup', form);
 
-			navigate('/login');
-		} catch (error) {
-			console.log(error);
-		}
-	}
+      navigate('/login');
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-	return (
-		<>
-			<Toaster />
-			<ResponsiveAppBar></ResponsiveAppBar>
-			<Box
-				container
-				direction='column'
-				justifyContent='center'
-				alignItems='center'
-				sx={{
-					display: 'flex',
-					height: '85vh',
-					justifyContent: 'center',
-					flexWrap: 'wrap',
-					'& > :not(style)': {
-						m: 1,
-						width: 380,
-						height: 420,
-					},
-				}}
-			>
-				<Paper elevation={3}>
-					<form onSubmit={handleSubmit} className={style.form}>
-						<ExploreIcon sx={{ fontSize: 60, marginBottom: '15px' }} />
-						<TextField
-							id='name'
-							name='name'
-							value={form.name}
-							onChange={handleChange}
-							label='Name'
-							variant='outlined'
-							sx={{ width: '80%', marginBottom: '15px' }}
-							required
-						/>
-						<TextField
-							id='email'
-							name='email'
-							value={form.email}
-							onChange={handleChange}
-							label='E-mail'
-							variant='outlined'
-							sx={{ width: '80%', marginBottom: '15px' }}
-							required
-						/>
-						<TextField
-							id='password'
-							type='password'
-							name='password'
-							value={form.password}
-							onChange={handleChange}
-							label='Password'
-							variant='outlined'
-							sx={{ width: '80%', marginBottom: '15px' }}
-							required
-						/>
-						<TextField
-							id='passwordConfirmation'
-							type='password'
-							name='passwordConfirmation'
-							value={form.passwordConfirmation}
-							onChange={handleChange}
-							label='Confirm Password'
-							variant='outlined'
-							sx={{ width: '80%', marginBottom: '15px' }}
-							required
-						/>
-						<Button variant='contained' type='submit'>
-							SignUp
-						</Button>
-					</form>
-				</Paper>
-			</Box>
-			<Footer></Footer>
-		</>
-	);
+  return (
+    <>
+      <Toaster />
+      <ResponsiveAppBar></ResponsiveAppBar>
+      <Box
+        container
+        direction='column'
+        justifyContent='center'
+        alignItems='center'
+        sx={{
+          display: 'flex',
+          height: '85vh',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          '& > :not(style)': {
+            m: 1,
+            width: 380,
+            height: 558,
+          },
+        }}
+      >
+        <Paper elevation={3}>
+          <form className={style.form}>
+            <ExploreIcon sx={{ fontSize: 60, marginBottom: '15px' }} />
+            <TextField
+              {...register('firstName', {
+                required: 'Required',
+              })}
+              id='firstName'
+              name='firstName'
+              value={form.firstName}
+              onChange={handleChange}
+              label='Fist Name'
+              variant='outlined'
+              sx={{ width: '80%', marginBottom: '15px' }}
+              error={Boolean(errors.firstName)}
+              helperText={errors.firstName?.message}
+            />
+            <TextField
+              {...register('lastName', {
+                required: 'Required',
+              })}
+              id='lastName'
+              name='lastName'
+              value={form.lastName}
+              onChange={handleChange}
+              label='Last Name'
+              variant='outlined'
+              sx={{ width: '80%', marginBottom: '15px' }}
+              error={Boolean(errors.lastName)}
+              helperText={errors.firstName?.message}
+            />
+            <TextField
+              {...register('email', {
+                required: 'Required',
+                pattern: {
+                  value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+                  message: 'Enter a valid e-mail address',
+                },
+              })}
+              id='email'
+              name='email'
+              value={form.email}
+              onChange={handleChange}
+              label='E-mail'
+              variant='outlined'
+              sx={{ width: '80%', marginBottom: '15px' }}
+              error={Boolean(errors.email)}
+              helperText={errors.email?.message}
+            />
+            <TextField
+              {...register('password', {
+                required: 'Required',
+                pattern: {
+                  value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+                  message:
+                    'Password must have: at least 8 characters, one upper case letter, one lower case letter, and one numeric digit.',
+                },
+              })}
+              id='password'
+              type='password'
+              name='password'
+              value={form.password}
+              onChange={handleChange}
+              label='Password'
+              variant='outlined'
+              sx={{ width: '80%', marginBottom: '15px' }}
+              error={Boolean(errors.password)}
+              helperText={errors.password?.message}
+            />
+            <TextField
+              {...register('passwordConfirmation', { required: 'Required' })}
+              id='passwordConfirmation'
+              type='password'
+              name='passwordConfirmation'
+              value={form.passwordConfirmation}
+              onChange={handleChange}
+              label='Confirm Password'
+              variant='outlined'
+              sx={{ width: '80%', marginBottom: '15px' }}
+              error={Boolean(errors.passwordConfirmation)}
+              helperText={errors.passwordConfirmation?.message}
+            />
+            <Button variant='contained' onClick={handleSubmit(submitFunction)}>
+              SignUp
+            </Button>
+          </form>
+        </Paper>
+      </Box>
+      <Footer></Footer>
+    </>
+  );
 }

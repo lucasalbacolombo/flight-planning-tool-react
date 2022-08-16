@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { api } from "../../api/api";
-import { Link } from "react-router-dom";
-import ResponsiveUserBar from "../../components/userNavbar/index";
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import LinearProgress from "@mui/material/LinearProgress";
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { api } from '../../api/api';
+import { Link } from 'react-router-dom';
+import ResponsiveUserBar from '../../components/userNavbar/index';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
 
 export function UserHome() {
   const [flights, setFlights] = useState([]);
@@ -22,7 +22,7 @@ export function UserHome() {
   useEffect(() => {
     async function fetchFlights() {
       try {
-        const response = await api.get("/flight/flights");
+        const response = await api.get('/flight/flights');
         setFlights(response.data);
         setLoading(false);
       } catch (error) {
@@ -36,7 +36,7 @@ export function UserHome() {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const response = await api.get("/user/profile");
+        const response = await api.get('/user/profile');
         setUser(response.data);
         setLoading(false);
       } catch (error) {
@@ -48,16 +48,16 @@ export function UserHome() {
   }, []);
 
   return loading ? (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: '100%' }}>
       <LinearProgress />
     </Box>
   ) : (
     <>
       <ResponsiveUserBar />
       <h3
-        style={{ marginLeft: "10px", marginTop: "25px" }}
-      >{`Hi, ${user.name}!`}</h3>
-      <h4 style={{ marginLeft: "10px", marginTop: "25px" }}>My Flights</h4>
+        style={{ marginLeft: '10px', marginTop: '25px' }}
+      >{`Hi, ${user.firstName} ${user.lastName}!`}</h3>
+      <h4 style={{ marginLeft: '10px', marginTop: '25px' }}>My Flights</h4>
       <Box sx={{ flexGrow: 1 }} direction='row'>
         <Grid
           container
@@ -72,8 +72,8 @@ export function UserHome() {
                 <Card
                   sx={{
                     minWidth: 275,
-                    margin: "10px",
-                    backgroundColor: "rgb(242, 244, 250)",
+                    margin: '10px',
+                    backgroundColor: 'rgb(242, 244, 250)',
                   }}
                 >
                   <CardContent>
@@ -109,13 +109,13 @@ export function UserHome() {
                   <CardActions>
                     <Link
                       to={`/flight-status/${currentFlight._id}`}
-                      style={{ textDecoration: "none", color: "black" }}
+                      style={{ textDecoration: 'none', color: 'black' }}
                     >
                       <Button size='small'>Flight Status</Button>
                     </Link>
                     <Link
                       to={`/edit-flight/${currentFlight._id}`}
-                      style={{ textDecoration: "none", color: "black" }}
+                      style={{ textDecoration: 'none', color: 'black' }}
                     >
                       <Button size='small'>Edit Flight</Button>
                     </Link>
