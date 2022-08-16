@@ -1,21 +1,21 @@
-import { useState, useEffect, useMemo } from "react";
-import React from "react";
-import { useParams } from "react-router-dom";
-import { api } from "../../api/api";
-import axios from "axios";
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import EditNavbar from "../../components/editNavbar/index";
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import LinearProgress from "@mui/material/LinearProgress";
-import style from "./style.module.css";
+import { useState, useEffect, useMemo } from 'react';
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { api } from '../../api/api';
+import axios from 'axios';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import EditNavbar from '../../components/editNavbar/index';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
+import style from './style.module.css';
 
 const containerStyle = {
-  width: "100%",
-  height: "60vh",
+  width: '100%',
+  height: '60vh',
 };
 
 const mapZoom = 7;
@@ -70,7 +70,7 @@ export function FlightStatus() {
   }, [id]);
 
   const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
+    id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
   });
 
@@ -129,13 +129,13 @@ export function FlightStatus() {
   const center = useMemo(() => ({ lat: -15.8625, lng: -47.9125 }), []);
 
   return loading ? (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: '100%' }}>
       <LinearProgress />
     </Box>
   ) : isLoaded ? (
     <>
       <EditNavbar />
-      <h3 style={{ margin: "20px" }}>Flight Status</h3>
+      <h3 style={{ margin: '20px' }}>Flight Status</h3>
 
       <Grid
         container
@@ -144,7 +144,7 @@ export function FlightStatus() {
         justifyContent='center'
         alignItems='center'
       >
-        <Grid item xs={11} style={{ marginBottom: "20px" }}>
+        <Grid item xs={11} style={{ marginBottom: '20px' }}>
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={departurePosition}
@@ -156,19 +156,19 @@ export function FlightStatus() {
             <Marker
               position={departurePosition}
               options={{
-                label: { text: "A", className: style.marker },
+                label: { text: 'A', className: style.marker },
               }}
             />
             <Marker
               position={arrivalPosition}
               options={{
-                label: { text: "B", className: style.marker },
+                label: { text: 'B', className: style.marker },
               }}
             />
           </GoogleMap>
         </Grid>
         <Grid item xs={11}>
-          <Card sx={{ backgroundColor: "rgb(238, 241, 253)" }}>
+          <Card sx={{ backgroundColor: 'rgb(238, 241, 253)' }}>
             <CardContent>
               <Typography gutterBottom variant='h5' component='div'>
                 <h4>Airport Information</h4>
@@ -188,7 +188,7 @@ export function FlightStatus() {
                           <li>City: {airport.cidade}</li>
                           <li>Elevation: {airport.altitude_pes}ft</li>
                           <li>
-                            Coordinates:{" "}
+                            Coordinates:{' '}
                             {`${airport.lat_grau}°${airport.lat_min}'${airport.lat_sec}''${airport.lat_dir}   ${airport.lon_grau}°${airport.lon_min}'${airport.lon_sec}''${airport.lon_dir} `}
                           </li>
                         </ul>
@@ -209,7 +209,7 @@ export function FlightStatus() {
                           <li>City: {airport.cidade}</li>
                           <li>Elevation: {airport.altitude_pes}ft</li>
                           <li>
-                            Coordinates:{" "}
+                            Coordinates:{' '}
                             {`${airport.lat_grau}°${airport.lat_min}'${airport.lat_sec}''${airport.lat_dir}   ${airport.lon_grau}°${airport.lon_min}'${airport.lon_sec}''${airport.lon_dir} `}
                           </li>
                         </ul>
@@ -231,7 +231,7 @@ export function FlightStatus() {
                           <li>City: {airport.cidade}</li>
                           <li>Elevation: {airport.altitude_pes}ft</li>
                           <li>
-                            Coordinates:{" "}
+                            Coordinates:{' '}
                             {`${airport.lat_grau}°${airport.lat_min}'${airport.lat_sec}''${airport.lat_dir}   ${airport.lon_grau}°${airport.lon_min}'${airport.lon_sec}''${airport.lon_dir} `}
                           </li>
                         </ul>
@@ -243,7 +243,7 @@ export function FlightStatus() {
           </Card>
         </Grid>
         <Grid item xs={11}>
-          <Card sx={{ backgroundColor: "rgb(238, 241, 253)" }}>
+          <Card sx={{ backgroundColor: 'rgb(238, 241, 253)' }}>
             <CardContent>
               <Typography gutterBottom variant='h5' component='div'>
                 METAR
@@ -301,7 +301,7 @@ export function FlightStatus() {
           </Card>
         </Grid>
         <Grid item xs={11}>
-          <Card sx={{ backgroundColor: "rgb(238, 241, 253)" }}>
+          <Card sx={{ backgroundColor: 'rgb(238, 241, 253)' }}>
             <CardContent>
               <Typography gutterBottom variant='h5' component='div'>
                 TAF
@@ -360,8 +360,8 @@ export function FlightStatus() {
         <Grid item xs={11}>
           <Card
             sx={{
-              backgroundColor: "rgb(238, 241, 253)",
-              marginBottom: "20px",
+              backgroundColor: 'rgb(238, 241, 253)',
+              marginBottom: '20px',
             }}
           >
             <CardContent>
@@ -375,9 +375,11 @@ export function FlightStatus() {
                       {`Total Fuel Available: ${currentAircraft.fuelCapacity} liters`}
                     </p>
                     <p>
-                      Fuel Required:{" "}
-                      {currentAircraft.fuelPerHour *
-                        (flightData.flight.flightTime / 60)}{" "}
+                      Fuel Required:{' '}
+                      {(
+                        currentAircraft.fuelPerHour *
+                        (flightData.flight.flightTime / 60)
+                      ).toFixed(2)}{' '}
                       liters
                     </p>
                   </div>

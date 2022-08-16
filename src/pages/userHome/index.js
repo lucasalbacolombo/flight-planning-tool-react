@@ -47,6 +47,28 @@ export function UserHome() {
     fetchUser();
   }, []);
 
+  function userRender() {
+    if (flights.length === 0) {
+      return (
+        <>
+          <h6 style={{ marginLeft: '10px', marginTop: '25px' }}>
+            You don't have any flight logged yet
+          </h6>
+          <p style={{ marginLeft: '10px', marginTop: '25px' }}>
+            Start by adding a new aircraft, then you are ready to log a new
+            flight!
+          </p>
+        </>
+      );
+    } else {
+      return (
+        <h4 style={{ marginLeft: '10px', marginTop: '25px' }}>My Flights</h4>
+      );
+    }
+  }
+
+  console.log(flights);
+
   return loading ? (
     <Box sx={{ width: '100%' }}>
       <LinearProgress />
@@ -57,7 +79,7 @@ export function UserHome() {
       <h3
         style={{ marginLeft: '10px', marginTop: '25px' }}
       >{`Hi, ${user.firstName} ${user.lastName}!`}</h3>
-      <h4 style={{ marginLeft: '10px', marginTop: '25px' }}>My Flights</h4>
+      {userRender()}
       <Box sx={{ flexGrow: 1 }} direction='row'>
         <Grid
           container
