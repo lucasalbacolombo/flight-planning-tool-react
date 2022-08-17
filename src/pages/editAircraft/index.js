@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import LinearProgress from '@mui/material/LinearProgress';
-import AircraftNavbar from '../../components/aircraftsNavbar/index';
+import AircraftNavbar from '../../components/AircraftsNavbar';
 
 export function EditAircraft() {
   const navigate = useNavigate();

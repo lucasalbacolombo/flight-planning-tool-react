@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { api } from '../../api/api';
 import axios from 'axios';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import EditNavbar from '../../components/editNavbar/index';
+import EditNavbar from '../../components/EditNavbar';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';

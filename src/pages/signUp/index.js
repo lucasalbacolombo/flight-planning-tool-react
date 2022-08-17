@@ -9,8 +9,8 @@ import ExploreIcon from '@mui/icons-material/Explore';
 import Button from '@mui/material/Button';
 import { Toaster, toast } from 'react-hot-toast';
 import style from './style.module.css';
-import ResponsiveAppBar from '../../components/navbar/index';
-import Footer from '../../components/footer/index';
+import ResponsiveAppBar from '../../components/HomeNavbar';
+import Footer from '../../components/Footer';
 
 export function SignUp() {
   const [form, setForm] = useState({

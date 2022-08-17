@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import FlightIcon from '@mui/icons-material/Flight';
 import Grid from '@mui/material/Grid';
-import EditNavbar from '../../components/editNavbar/index';
+import EditNavbar from '../../components/EditNavbar';
 
 export function NewAircraft() {
   const navigate = useNavigate();

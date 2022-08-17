@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { AuthContextComponent } from './contexts/authContext';
-import { ProtectedRoute } from './components/protectedRoute';
+import { ProtectedRoute } from './components/ProtectedRoute';
 import { EditFlight } from './pages/editFlight';
 import { EditUser } from './pages/editUser';
 import { FlightStatus } from './pages/flightStatus';

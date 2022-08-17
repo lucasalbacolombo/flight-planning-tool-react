@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditNavbar from '../../components/editNavbar/index';
+import EditNavbar from '../../components/EditNavbar';
 import { Toaster, toast } from 'react-hot-toast';
 
 export function EditUser() {

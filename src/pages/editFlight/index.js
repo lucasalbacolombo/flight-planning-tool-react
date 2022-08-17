@@ -9,7 +9,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import LinearProgress from '@mui/material/LinearProgress';
-import EditNavbar from '../../components/editNavbar/index';
+import EditNavbar from '../../components/EditNavbar';
 import MenuItem from '@mui/material/MenuItem';
 import Grid from '@mui/material/Grid';
 

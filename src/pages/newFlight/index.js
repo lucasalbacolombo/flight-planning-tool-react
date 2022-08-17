@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import LinearProgress from '@mui/material/LinearProgress';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import Grid from '@mui/material/Grid';
-import EditNavbar from '../../components/editNavbar/index';
+import EditNavbar from '../../components/EditNavbar';
 
 export function NewFlight() {
   const navigate = useNavigate();

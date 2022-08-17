@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { api } from '../../api/api';
 import { Link } from 'react-router-dom';
-import ResponsiveUserBar from '../../components/userNavbar/index';
+import ResponsiveUserBar from '../../components/UserNavbar';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
