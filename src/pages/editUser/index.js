@@ -33,7 +33,7 @@ export function EditUser() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  async function submitFunction() {
+  async function submitForm() {
     try {
       if (form.password !== form.passwordConfirmation) {
         toast.error('Wrong Password Confirmation');
@@ -166,7 +166,7 @@ export function EditUser() {
             <div>
               <Button
                 variant='contained'
-                onClick={handleSubmit(submitFunction)}
+                onClick={handleSubmit(submitForm)}
                 style={{ margin: '15px' }}
               >
                 Update

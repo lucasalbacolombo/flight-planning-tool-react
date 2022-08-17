@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { AuthContextComponent } from './contexts/authContext';
+import { AuthContextComponent } from './contexts/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { EditFlight } from './pages/editFlight';
 import { EditUser } from './pages/editUser';

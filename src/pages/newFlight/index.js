@@ -56,7 +56,7 @@ export function NewFlight() {
     fetchAircrafts();
   }, []);
 
-  async function submitFunction() {
+  async function submitForm() {
     try {
       await api.post('/flight/create-flight', form);
 
@@ -239,7 +239,7 @@ export function NewFlight() {
           <Button
             sx={{ marginBottom: '30px' }}
             variant='contained'
-            onClick={handleSubmit(submitFunction)}
+            onClick={handleSubmit(submitForm)}
           >
             Create Flight <FlightTakeoffIcon />
           </Button>

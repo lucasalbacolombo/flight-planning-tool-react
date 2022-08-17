@@ -33,7 +33,7 @@ export function SignUp() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  async function submitFunction(e) {
+  async function submitFunction() {
     try {
       if (form.password !== form.passwordConfirmation) {
         toast.error('Wrong Password Confirmation');

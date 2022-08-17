@@ -53,7 +53,7 @@ export function EditAircraft() {
     fetchAircraft(id);
   }, []);
 
-  async function submitFunction() {
+  async function submitForm() {
     try {
       await api.patch(`/aircraft/edit/${id}`, form);
 
@@ -190,7 +190,7 @@ export function EditAircraft() {
           />
           <Button
             variant='contained'
-            onClick={handleSubmit(submitFunction)}
+            onClick={handleSubmit(submitForm)}
             sx={{ marginBottom: '15px', width: '20%' }}
             className={style.editBtn}
           >

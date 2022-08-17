@@ -82,7 +82,7 @@ export function EditFlight() {
     }
   }
 
-  async function submitFunction() {
+  async function submitForm() {
     try {
       await api.patch(`/flight/edit/${id}`, form);
 
@@ -260,7 +260,7 @@ export function EditFlight() {
 
           <Button
             variant='contained'
-            onClick={handleSubmit(submitFunction)}
+            onClick={handleSubmit(submitForm)}
             sx={{ marginBottom: '10px', width: '25%' }}
             className={style.editBtn}
           >

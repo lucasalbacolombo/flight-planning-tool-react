@@ -51,10 +51,10 @@ export function UserHome() {
     if (flights.length === 0) {
       return (
         <>
-          <h6 style={{ marginLeft: '10px', marginTop: '25px' }}>
+          <h6 style={{ marginLeft: '30px', marginTop: '25px' }}>
             You don't have any flight logged yet
           </h6>
-          <p style={{ marginLeft: '10px', marginTop: '25px' }}>
+          <p style={{ marginLeft: '30px', marginTop: '25px' }}>
             Start by adding a new aircraft, then you are ready to log a new
             flight!
           </p>
@@ -62,12 +62,10 @@ export function UserHome() {
       );
     } else {
       return (
-        <h4 style={{ marginLeft: '10px', marginTop: '25px' }}>My Flights</h4>
+        <h4 style={{ marginLeft: '30px', marginTop: '25px' }}>My Flights</h4>
       );
     }
   }
-
-  console.log(flights);
 
   return loading ? (
     <Box sx={{ width: '100%' }}>
@@ -77,7 +75,7 @@ export function UserHome() {
     <>
       <ResponsiveUserBar />
       <h3
-        style={{ marginLeft: '10px', marginTop: '25px' }}
+        style={{ marginLeft: '30px', marginTop: '25px' }}
       >{`Hi, ${user.firstName} ${user.lastName}!`}</h3>
       {userRender()}
       <Box sx={{ flexGrow: 1 }} direction='row'>

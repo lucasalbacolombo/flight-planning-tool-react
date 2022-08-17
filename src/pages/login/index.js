@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/authContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import { api } from '../../api/api';
 import style from './style.module.css';
 import ResponsiveAppBar from '../../components/HomeNavbar';
@@ -33,7 +33,7 @@ export function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  async function submitForm(e) {
+  async function submitForm() {
     try {
       const response = await api.post('/user/login', form);
       setLoggedInUser({ ...response.data });

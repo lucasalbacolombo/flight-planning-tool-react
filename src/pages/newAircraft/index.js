@@ -32,7 +32,7 @@ export function NewAircraft() {
     setForm({ ...form, [event.target.name]: event.target.value });
   }
 
-  async function submitForm(event) {
+  async function submitForm() {
     try {
       await api.post('/aircraft/create-aircraft', form);
 
