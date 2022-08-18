@@ -62,7 +62,7 @@ export function UserHome() {
       );
     } else {
       return (
-        <h4 style={{ marginLeft: '30px', marginTop: '25px' }}>My Flights</h4>
+        <h4 style={{ marginLeft: '15px', marginTop: '25px' }}>My Flights</h4>
       );
     }
   }
@@ -75,7 +75,7 @@ export function UserHome() {
     <>
       <ResponsiveUserBar />
       <h3
-        style={{ marginLeft: '30px', marginTop: '25px' }}
+        style={{ marginLeft: '15px', marginTop: '25px' }}
       >{`Hi, ${user.firstName} ${user.lastName}!`}</h3>
       {userRender()}
       <Box sx={{ flexGrow: 1 }} direction='row'>
