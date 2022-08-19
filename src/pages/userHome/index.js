@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { LoadingContext } from '../../contexts/LoadingContext';
 import { api } from '../../api/api';
 import { Link } from 'react-router-dom';
 import ResponsiveUserBar from '../../components/UserNavbar';
@@ -17,7 +17,7 @@ export function UserHome() {
 
   const [user, setUser] = useState([]);
 
-  const [loading, setLoading] = useState(true);
+  const { loading, setLoading } = useContext(LoadingContext);
 
   useEffect(() => {
     async function fetchFlights() {

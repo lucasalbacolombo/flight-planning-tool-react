@@ -124,11 +124,15 @@ export function NewFlight() {
             })}
             id='departure'
             name='departure'
-            value={form.departure.toUpperCase()}
+            value={form.departure}
             onChange={handleChange}
             label='Departure ICAO'
             variant='outlined'
-            sx={{ marginBottom: '20px', width: '40%' }}
+            sx={{
+              marginBottom: '20px',
+              width: '40%',
+              textTransform: 'uppercase',
+            }}
             className={style.input}
             error={Boolean(errors.departure)}
             helperText={errors.departure?.message}
@@ -143,11 +147,15 @@ export function NewFlight() {
             })}
             id='arrival'
             name='arrival'
-            value={form.arrival.toUpperCase()}
+            value={form.arrival}
             onChange={handleChange}
             label='Arrival ICAO'
             variant='outlined'
-            sx={{ marginBottom: '20px', width: '40%' }}
+            sx={{
+              marginBottom: '20px',
+              width: '40%',
+              textTransform: 'uppercase',
+            }}
             className={style.input}
             error={Boolean(errors.arrival)}
             helperText={errors.arrival?.message}
@@ -162,11 +170,15 @@ export function NewFlight() {
             })}
             id='alternative'
             name='alternative'
-            value={form.alternative.toUpperCase()}
+            value={form.alternative}
             onChange={handleChange}
             label='Alternative ICAO'
             variant='outlined'
-            sx={{ marginBottom: '20px', width: '40%' }}
+            sx={{
+              marginBottom: '20px',
+              width: '40%',
+              textTransform: 'uppercase',
+            }}
             className={style.input}
             error={Boolean(errors.alternative)}
             helperText={errors.alternative?.message}

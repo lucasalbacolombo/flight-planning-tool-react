@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
 import { AuthContextComponent } from './contexts/AuthContext';
-import UserProvider from './contexts/UserContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { EditFlight } from './pages/editFlight';
 import { EditUser } from './pages/editUser';
@@ -16,12 +15,13 @@ import { EditAircraft } from './pages/editAircraft/index';
 import { MyAircrafts } from './pages/myAircrafts/index';
 import { ErrorPage } from './pages/errorPage';
 import './style.css';
+import LoadingProvider from './contexts/LoadingContext';
 
 function App() {
   return (
     <>
       <AuthContextComponent>
-        <UserProvider>
+        <LoadingProvider>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/signup' element={<SignUp />} />
@@ -61,7 +61,7 @@ function App() {
               element={<ProtectedRoute component={MyAircrafts} />}
             />
           </Routes>
-        </UserProvider>
+        </LoadingProvider>
       </AuthContextComponent>
     </>
   );

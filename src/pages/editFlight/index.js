@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import { LoadingContext } from '../../contexts/LoadingContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { api } from '../../api/api';
@@ -31,7 +31,7 @@ export function EditFlight() {
 
   const [aircraft, setAircraft] = useState([]);
 
-  const [loading, setLoading] = useState(true);
+  const { loading, setLoading } = useContext(LoadingContext);
 
   const {
     register,

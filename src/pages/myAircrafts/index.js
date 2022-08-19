@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import { LoadingContext } from '../../contexts/LoadingContext';
 import { api } from '../../api/api';
 import { Link } from 'react-router-dom';
 import AircraftNavbar from '../../components/AircraftsNavbar';
@@ -15,7 +15,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 export function MyAircrafts() {
   const [aircrafts, setAircrafts] = useState([]);
 
-  const [loading, setLoading] = useState(true);
+  const { loading, setLoading } = useContext(LoadingContext);
 
   useEffect(() => {
     async function fetchAircrafts() {
