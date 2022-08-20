@@ -1,10 +1,9 @@
 // import React from 'react';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { api } from '../../api/api';
 import axios from 'axios';
 import GoogleMaps from '../../components/GoogleMaps';
-// import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import EditNavbar from '../../components/EditNavbar';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
@@ -12,21 +11,11 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
-// import style from './style.module.css';
-
-// const containerStyle = {
-//   width: '100%',
-//   height: '60vh',
-// };
-
-// const mapZoom = 7;
 
 export function FlightStatus() {
   const { id } = useParams();
 
   const [loading, setLoading] = useState(true);
-
-  // const [map, setMap] = React.useState(null);
 
   const [flightData, setFlightData] = useState({
     flight: {},
@@ -70,21 +59,6 @@ export function FlightStatus() {
     fetchData();
   }, [id]);
 
-  // const { isLoaded } = useJsApiLoader({
-  //   id: 'google-map-script',
-  //   googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
-  // });
-
-  // const onLoad = React.useCallback(function callback(map) {
-  //   const bounds = new window.google.maps.LatLngBounds(center);
-  //   map.fitBounds(bounds);
-  //   setMap(map);
-  // }, []);
-
-  // const onUnmount = React.useCallback(function callback(map) {
-  //   setMap(null);
-  // }, []);
-
   const departurePosition = {
     lat: Number(
       flightData.airport
@@ -127,8 +101,6 @@ export function FlightStatus() {
     ),
   };
 
-  // const center = useMemo(() => ({ lat: -15.8625, lng: -47.9125 }), []);
-
   return loading ? (
     <Box sx={{ width: '100%' }}>
       <LinearProgress />
@@ -149,29 +121,6 @@ export function FlightStatus() {
           departurePosition={departurePosition}
           arrivalPosition={arrivalPosition}
         />
-        {/* <Grid item xs={11} style={{ marginBottom: '20px' }}>
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={departurePosition}
-            zoom={mapZoom}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
-            mapTypeId='terrain'
-          >
-            <Marker
-              position={departurePosition}
-              options={{
-                label: { text: 'A', className: style.marker },
-              }}
-            />
-            <Marker
-              position={arrivalPosition}
-              options={{
-                label: { text: 'B', className: style.marker },
-              }}
-            />
-          </GoogleMap>
-        </Grid> */}
         <Grid item xs={11}>
           <Card sx={{ backgroundColor: 'rgb(238, 241, 253)' }}>
             <CardContent>
