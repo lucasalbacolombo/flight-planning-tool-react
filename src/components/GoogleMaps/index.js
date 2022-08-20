@@ -9,7 +9,7 @@ const containerStyle = {
   height: '60vh',
 };
 
-const mapZoom = 7;
+const mapZoom = 5;
 
 function GoogleMaps(props) {
   const [map, setMap] = React.useState(null);
