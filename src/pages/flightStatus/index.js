@@ -5,12 +5,14 @@ import axios from 'axios';
 import { Airports } from '../../components/Airports';
 import { Metar } from '../../components/Metar';
 import { Taf } from '../../components/Taf';
-import { FuelCard } from '../../components/FuelCard';
 import GoogleMaps from '../../components/GoogleMaps';
 import EditNavbar from '../../components/EditNavbar';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 export function FlightStatus() {
   const { id } = useParams();
@@ -157,7 +159,37 @@ export function FlightStatus() {
         <Airports flight={flight} airport={airport} />
         <Metar flight={flight} metar={metar} />
         <Taf flight={flight} taf={taf} />
-        <FuelCard flight={flight} />
+        <Grid item xs={11}>
+          <Card
+            sx={{
+              backgroundColor: 'rgb(238, 241, 253)',
+              marginBottom: '20px',
+            }}
+          >
+            <CardContent>
+              <Typography gutterBottom variant='h5' component='div'>
+                Fuel Information
+              </Typography>
+              {flight.aircraft.map((currentAircraft) => {
+                return (
+                  <div key={currentAircraft._id}>
+                    <p>
+                      {`Total Fuel Available: ${currentAircraft.fuelCapacity} liters`}
+                    </p>
+                    <p>
+                      Fuel Required:{' '}
+                      {(
+                        currentAircraft.fuelPerHour *
+                        (flight.flightTime / 60)
+                      ).toFixed(2)}{' '}
+                      liters
+                    </p>
+                  </div>
+                );
+              })}
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
     </>
   );
