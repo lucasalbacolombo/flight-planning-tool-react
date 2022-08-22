@@ -52,7 +52,6 @@ export function Login() {
       <Toaster />
       <ResponsiveAppBar />
       <Box
-        container
         direction='column'
         justifyContent='center'
         alignItems='center'

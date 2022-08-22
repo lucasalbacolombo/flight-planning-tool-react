@@ -22,7 +22,7 @@ export function EditAircraft() {
     registration: '',
     make: '',
     model: '',
-    icaocode: '',
+    icaoCode: '',
     fuelPerHour: '',
     fuelCapacity: '',
   });
@@ -52,7 +52,7 @@ export function EditAircraft() {
     }
 
     fetchAircraft(id);
-  }, []);
+  }, [id, setLoading]);
 
   async function submitForm() {
     try {
