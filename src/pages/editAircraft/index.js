@@ -92,9 +92,7 @@ export function EditAircraft() {
           sx={{ width: '100%' }}
         >
           <TextField
-            {...register('registration', {
-              required: 'Required',
-            })}
+            {...register('registration', {})}
             id='registration'
             name='registration'
             value={form.registration}
@@ -107,9 +105,7 @@ export function EditAircraft() {
             helperText={errors.registration?.message}
           />
           <TextField
-            {...register('make', {
-              required: 'Required',
-            })}
+            {...register('make', {})}
             id='make'
             name='make'
             value={form.make}
@@ -122,9 +118,7 @@ export function EditAircraft() {
             helperText={errors.make?.message}
           />
           <TextField
-            {...register('model', {
-              required: 'Required',
-            })}
+            {...register('model', {})}
             id='model'
             name='model'
             value={form.model}
@@ -137,9 +131,7 @@ export function EditAircraft() {
             helperText={errors.model?.message}
           />
           <TextField
-            {...register('icaoCode', {
-              required: 'Required',
-            })}
+            {...register('icaoCode', {})}
             id='icaoCode'
             name='icaoCode'
             value={form.icaoCode}
@@ -153,7 +145,6 @@ export function EditAircraft() {
           />
           <TextField
             {...register('fuelPerHour', {
-              required: 'Required',
               pattern: {
                 value: /^[0-9]+$/,
                 message: 'Please, insert only numbers',
@@ -172,7 +163,6 @@ export function EditAircraft() {
           />
           <TextField
             {...register('fuelCapacity', {
-              required: 'Required',
               pattern: {
                 value: /^[0-9]+$/,
                 message: 'Please, insert only numbers',

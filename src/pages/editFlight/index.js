@@ -56,7 +56,7 @@ export function EditFlight() {
     }
 
     fetchFlight(id);
-  }, []);
+  }, [setLoading, id]);
 
   useEffect(() => {
     async function fetchAircraft() {
@@ -71,7 +71,7 @@ export function EditFlight() {
     }
 
     fetchAircraft();
-  }, []);
+  }, [setLoading]);
 
   async function handleDelete() {
     try {
@@ -122,7 +122,6 @@ export function EditFlight() {
           />
           <TextField
             {...register('eobt', {
-              required: 'Required',
               pattern: {
                 value: /^([0-9]{4})$/,
                 message: 'EOBT should have 4 numeric digits (e.g. 2230)',
@@ -141,7 +140,6 @@ export function EditFlight() {
           />
           <TextField
             {...register('departure', {
-              required: 'Required',
               pattern: {
                 value: /^[A-Z]{4}$/,
                 message: 'Departure should have 4 letters (e.g. SBSP)',
@@ -160,7 +158,6 @@ export function EditFlight() {
           />
           <TextField
             {...register('arrival', {
-              required: 'Required',
               pattern: {
                 value: /^[A-Z]{4}$/,
                 message: 'Arrival should have 4 letters (e.g. SBSP)',
@@ -179,7 +176,6 @@ export function EditFlight() {
           />
           <TextField
             {...register('alternative', {
-              required: 'Required',
               pattern: {
                 value: /^[A-Z]{4}$/,
                 message: 'Alternative should have 4 letters (e.g. SBSP)',
@@ -198,7 +194,6 @@ export function EditFlight() {
           />
           <TextField
             {...register('distance', {
-              required: 'Required',
               pattern: {
                 value: /^[0-9]+$/,
                 message: 'Please, insert only numbers',
@@ -217,7 +212,6 @@ export function EditFlight() {
           />
           <TextField
             {...register('flightTime', {
-              required: 'Required',
               pattern: {
                 value: /^[0-9]+$/,
                 message: 'Please, insert only numbers',

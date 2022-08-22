@@ -119,7 +119,8 @@ export function NewFlight() {
               required: 'Required',
               pattern: {
                 value: /^[A-Z]{4}$/,
-                message: 'Departure should have 4 letters (e.g. SBSP)',
+                message:
+                  'Departure should have 4 uppercase letters (e.g. SBSP)',
               },
             })}
             id='departure'
@@ -142,7 +143,7 @@ export function NewFlight() {
               required: 'Required',
               pattern: {
                 value: /^[A-Z]{4}$/,
-                message: 'Arrival should have 4 letters (e.g. SBSP)',
+                message: 'Arrival should have 4 uppercase letters (e.g. SBSP)',
               },
             })}
             id='arrival'
@@ -165,7 +166,8 @@ export function NewFlight() {
               required: 'Required',
               pattern: {
                 value: /^[A-Z]{4}$/,
-                message: 'Alternative should have 4 letters (e.g. SBSP)',
+                message:
+                  'Alternative should have 4 uppercase letters (e.g. SBSP)',
               },
             })}
             id='alternative'

@@ -114,7 +114,6 @@ export function EditUser() {
             />
             <TextField
               {...register('email', {
-                required: 'Required',
                 pattern: {
                   value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
                   message: 'Enter a valid e-mail address',
@@ -132,7 +131,6 @@ export function EditUser() {
             />
             <TextField
               {...register('password', {
-                required: 'Required',
                 pattern: {
                   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
                   message:
@@ -151,7 +149,7 @@ export function EditUser() {
               helperText={errors.password?.message}
             />
             <TextField
-              {...register('passwordConfirmation', { required: 'Required' })}
+              {...register('passwordConfirmation')}
               id='passwordConfirmation'
               type='password'
               name='passwordConfirmation'

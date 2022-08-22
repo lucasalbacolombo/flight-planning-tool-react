@@ -53,7 +53,6 @@ export function SignUp() {
       <Toaster />
       <ResponsiveAppBar></ResponsiveAppBar>
       <Box
-        container
         direction='column'
         justifyContent='center'
         alignItems='center'
