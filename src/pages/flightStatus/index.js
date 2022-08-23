@@ -2,17 +2,16 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { api } from '../../api/api';
 import axios from 'axios';
+import EditNavbar from '../../components/EditNavbar';
+import GoogleMaps from '../../components/GoogleMaps';
 import { Airports } from '../../components/Airports';
 import { Metar } from '../../components/Metar';
 import { Taf } from '../../components/Taf';
-import GoogleMaps from '../../components/GoogleMaps';
-import EditNavbar from '../../components/EditNavbar';
+import { FuelInformation } from '../../components/FuelInformation';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import { Paper } from '@mui/material';
 
 export function FlightStatus() {
   const { id } = useParams();
@@ -142,55 +141,35 @@ export function FlightStatus() {
   ) : (
     <>
       <EditNavbar />
-      <h3 style={{ margin: '20px' }}>Flight Status</h3>
+      <Paper>
+        <h3
+          style={{
+            marginLeft: '15px',
+            paddingTop: '15px',
+            paddingBottom: '15px',
+          }}
+        >
+          Flight Status
+        </h3>
 
-      <Grid
-        container
-        spacing={2}
-        direction='row'
-        justifyContent='center'
-        alignItems='center'
-      >
-        <GoogleMaps
-          departurePosition={departurePosition}
-          arrivalPosition={arrivalPosition}
-          flight={flight}
-        />
-        <Airports flight={flight} airport={airport} />
-        <Metar flight={flight} metar={metar} />
-        <Taf flight={flight} taf={taf} />
-        <Grid item xs={11}>
-          <Card
-            sx={{
-              backgroundColor: 'rgb(238, 241, 253)',
-              marginBottom: '20px',
-            }}
-          >
-            <CardContent>
-              <Typography gutterBottom variant='h5' component='div'>
-                Fuel Information
-              </Typography>
-              {flight.aircraft.map((currentAircraft) => {
-                return (
-                  <div key={currentAircraft._id}>
-                    <p>
-                      {`Total Fuel Available: ${currentAircraft.fuelCapacity} liters`}
-                    </p>
-                    <p>
-                      Fuel Required:{' '}
-                      {(
-                        currentAircraft.fuelPerHour *
-                        (flight.flightTime / 60)
-                      ).toFixed(2)}{' '}
-                      liters
-                    </p>
-                  </div>
-                );
-              })}
-            </CardContent>
-          </Card>
+        <Grid
+          container
+          spacing={2}
+          direction='row'
+          justifyContent='center'
+          alignItems='center'
+        >
+          <GoogleMaps
+            departurePosition={departurePosition}
+            arrivalPosition={arrivalPosition}
+            flight={flight}
+          />
+          <Airports flight={flight} airport={airport} />
+          <Metar flight={flight} metar={metar} />
+          <Taf flight={flight} taf={taf} />
+          <FuelInformation flight={flight} />
         </Grid>
-      </Grid>
+      </Paper>
     </>
   );
 }

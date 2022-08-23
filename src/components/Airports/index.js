@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 export function Airports(props) {
   return (
     <Grid item xs={11}>
-      <Card sx={{ backgroundColor: 'rgb(238, 241, 253)' }}>
+      <Card>
         <CardContent>
           <Typography gutterBottom variant='h5' component='div'>
             <h4>Airport Information</h4>

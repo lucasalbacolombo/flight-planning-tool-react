@@ -3,18 +3,18 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-export function Metar(props) {
+export function Metar({ metar, flight }) {
   return (
     <Grid item xs={11}>
-      <Card sx={{ backgroundColor: 'rgb(238, 241, 253)' }}>
+      <Card>
         <CardContent>
           <Typography gutterBottom variant='h5' component='div'>
             METAR
           </Typography>
           <div>
-            {props.metar
+            {metar
               .filter((currentMetar) => {
-                return currentMetar.id_localidade === props.flight.departure;
+                return currentMetar.id_localidade === flight.departure;
               })
               .map((metar) => {
                 return (
@@ -26,9 +26,9 @@ export function Metar(props) {
               })}
           </div>
           <div>
-            {props.metar
+            {metar
               .filter((currentMetar) => {
-                return currentMetar.id_localidade === props.flight.arrival;
+                return currentMetar.id_localidade === flight.arrival;
               })
               .map((metar) => {
                 return (
@@ -40,9 +40,9 @@ export function Metar(props) {
               })}
           </div>
           <div>
-            {props.metar
+            {metar
               .filter((currentMetar) => {
-                return currentMetar.id_localidade === props.flight.alternative;
+                return currentMetar.id_localidade === flight.alternative;
               })
               .map((metar) => {
                 return (

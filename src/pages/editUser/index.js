@@ -75,107 +75,109 @@ export function EditUser() {
     <>
       <Toaster />
       <EditNavbar />
-      <Box
-        direction='column'
-        justifyContent='center'
-        alignItems='center'
-        sx={{
-          display: 'flex',
-          height: '85vh',
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-          '& > :not(style)': {
-            m: 1,
-            width: 380,
-            height: 558,
-          },
-        }}
-      >
-        <Paper elevation={3}>
-          <form className={style.form}>
-            <TextField
-              id='firstName'
-              name='firstName'
-              value={form.firstName || ''}
-              onChange={handleChange}
-              label='Fist Name'
-              variant='outlined'
-              sx={{ width: '80%', marginBottom: '15px' }}
-              error={Boolean(errors.firstName)}
-            />
-            <TextField
-              id='lastName'
-              name='lastName'
-              value={form.lastName || ''}
-              onChange={handleChange}
-              label='Last Name'
-              variant='outlined'
-              sx={{ width: '80%', marginBottom: '15px' }}
-            />
-            <TextField
-              {...register('email', {
-                pattern: {
-                  value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-                  message: 'Enter a valid e-mail address',
-                },
-              })}
-              id='email'
-              name='email'
-              value={form.email || ''}
-              onChange={handleChange}
-              label='E-mail'
-              variant='outlined'
-              sx={{ width: '80%', marginBottom: '15px' }}
-              error={Boolean(errors.email)}
-              helperText={errors.email?.message}
-            />
-            <TextField
-              {...register('password', {
-                pattern: {
-                  value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
-                  message:
-                    'Password must have: at least 8 characters, one upper case letter, one lower case letter, and one numeric digit.',
-                },
-              })}
-              id='password'
-              type='password'
-              name='password'
-              value={form.password || ''}
-              onChange={handleChange}
-              label='Password'
-              variant='outlined'
-              sx={{ width: '80%', marginBottom: '15px' }}
-              error={Boolean(errors.password)}
-              helperText={errors.password?.message}
-            />
-            <TextField
-              {...register('passwordConfirmation')}
-              id='passwordConfirmation'
-              type='password'
-              name='passwordConfirmation'
-              value={form.passwordConfirmation || ''}
-              onChange={handleChange}
-              label='Confirm Password'
-              variant='outlined'
-              sx={{ width: '80%', marginBottom: '15px' }}
-              error={Boolean(errors.passwordConfirmation)}
-              helperText={errors.passwordConfirmation?.message}
-            />
-            <div>
-              <Button
-                variant='contained'
-                onClick={handleSubmit(submitForm)}
-                style={{ margin: '15px' }}
-              >
-                Update
-              </Button>
-              <Button variant='outlined' color='error' onClick={handleDelete}>
-                DELETE PROFILE <DeleteIcon />
-              </Button>
-            </div>
-          </form>
-        </Paper>
-      </Box>
+      <Paper sx={{ height: '100vh' }}>
+        <Box
+          direction='column'
+          justifyContent='center'
+          alignItems='center'
+          sx={{
+            display: 'flex',
+            height: '85vh',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            '& > :not(style)': {
+              m: 1,
+              width: 380,
+              height: 558,
+            },
+          }}
+        >
+          <Paper elevation={3}>
+            <form className={style.form}>
+              <TextField
+                id='firstName'
+                name='firstName'
+                value={form.firstName || ''}
+                onChange={handleChange}
+                label='Fist Name'
+                variant='outlined'
+                sx={{ width: '80%', marginBottom: '15px' }}
+                error={Boolean(errors.firstName)}
+              />
+              <TextField
+                id='lastName'
+                name='lastName'
+                value={form.lastName || ''}
+                onChange={handleChange}
+                label='Last Name'
+                variant='outlined'
+                sx={{ width: '80%', marginBottom: '15px' }}
+              />
+              <TextField
+                {...register('email', {
+                  pattern: {
+                    value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+                    message: 'Enter a valid e-mail address',
+                  },
+                })}
+                id='email'
+                name='email'
+                value={form.email || ''}
+                onChange={handleChange}
+                label='E-mail'
+                variant='outlined'
+                sx={{ width: '80%', marginBottom: '15px' }}
+                error={Boolean(errors.email)}
+                helperText={errors.email?.message}
+              />
+              <TextField
+                {...register('password', {
+                  pattern: {
+                    value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+                    message:
+                      'Password must have: at least 8 characters, one upper case letter, one lower case letter, and one numeric digit.',
+                  },
+                })}
+                id='password'
+                type='password'
+                name='password'
+                value={form.password || ''}
+                onChange={handleChange}
+                label='Password'
+                variant='outlined'
+                sx={{ width: '80%', marginBottom: '15px' }}
+                error={Boolean(errors.password)}
+                helperText={errors.password?.message}
+              />
+              <TextField
+                {...register('passwordConfirmation')}
+                id='passwordConfirmation'
+                type='password'
+                name='passwordConfirmation'
+                value={form.passwordConfirmation || ''}
+                onChange={handleChange}
+                label='Confirm Password'
+                variant='outlined'
+                sx={{ width: '80%', marginBottom: '15px' }}
+                error={Boolean(errors.passwordConfirmation)}
+                helperText={errors.passwordConfirmation?.message}
+              />
+              <div>
+                <Button
+                  variant='contained'
+                  onClick={handleSubmit(submitForm)}
+                  style={{ margin: '15px' }}
+                >
+                  Update
+                </Button>
+                <Button variant='outlined' color='error' onClick={handleDelete}>
+                  DELETE PROFILE <DeleteIcon />
+                </Button>
+              </div>
+            </form>
+          </Paper>
+        </Box>
+      </Paper>
     </>
   );
 }

@@ -1,8 +1,12 @@
+.grid {
+  margin-top: 0px !important;
+}
+
 @media (max-width: 800px) {
-	.input {
-		width: 70% !important;
-	}
-	.editBtn {
-		width: 50% !important;
-	}
+  .input {
+    width: 70% !important;
+  }
+  .editBtn {
+    width: 50% !important;
+  }
 }

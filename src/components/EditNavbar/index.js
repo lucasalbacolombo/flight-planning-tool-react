@@ -2,6 +2,7 @@ import * as React from 'react';
 import styles from './style.module.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { ColorButton } from '../../contexts/ColorModeContext';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -96,19 +97,6 @@ const EditNavbar = () => {
               </MenuItem>
             </Menu>
           </Box>
-
-          <Link
-            to={'/user-home'}
-            style={{ textDecoration: 'none', color: 'white' }}
-          >
-            <ExploreIcon
-              sx={{
-                display: { xs: 'flex', md: 'none' },
-                mr: 1,
-                fontSize: '35px',
-              }}
-            />
-          </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Link
               to={'/user-home'}
@@ -147,6 +135,7 @@ const EditNavbar = () => {
               ))}
             </Menu>
           </Box>
+          <ColorButton />
           <Link
             to='/edit-user'
             style={{ textDecoration: 'none', color: 'white' }}
