@@ -68,7 +68,7 @@ export function UserHome() {
       <LinearProgress />
     </Box>
   ) : (
-    <Paper>
+    <Paper sx={{ height: '100vh' }}>
       <ResponsiveUserBar />
       <h3
         style={{ marginLeft: '15px', marginTop: '25px' }}
