@@ -1,6 +1,5 @@
 import React from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import { useMemo } from 'react';
 import Grid from '@mui/material/Grid';
 import style from './style.module.css';
 
@@ -9,46 +8,30 @@ const containerStyle = {
   height: '60vh',
 };
 
-const mapZoom = 5;
-
-function GoogleMaps(props) {
-  const [map, setMap] = React.useState(null);
-
+function GoogleMaps({ departurePosition, arrivalPosition }) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
   });
 
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-    setMap(map);
-  }, []);
-
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
-  }, []);
-
-  const center = useMemo(() => ({ lat: -15.8625, lng: -47.9125 }), []);
+  const mapZoom = 6;
 
   return isLoaded ? (
     <Grid item xs={11} style={{ marginBottom: '20px' }}>
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={props.departurePosition}
+        center={departurePosition}
         zoom={mapZoom}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
         mapTypeId='terrain'
       >
         <Marker
-          position={props.departurePosition}
+          position={departurePosition}
           options={{
             label: { text: 'A', className: style.marker },
           }}
         />
         <Marker
-          position={props.arrivalPosition}
+          position={arrivalPosition}
           options={{
             label: { text: 'B', className: style.marker },
           }}

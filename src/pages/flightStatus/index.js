@@ -15,15 +15,10 @@ import { Paper } from '@mui/material';
 
 export function FlightStatus() {
   const { id } = useParams();
-
   const [loading, setLoading] = useState(true);
-
   const [flight, setFlight] = useState([]);
-
   const [airport, setAirport] = useState([]);
-
   const [metar, setMetar] = useState([]);
-
   const [taf, setTaf] = useState([]);
 
   useEffect(() => {
@@ -144,7 +139,7 @@ export function FlightStatus() {
       <Paper>
         <h3
           style={{
-            marginLeft: '15px',
+            marginLeft: '30px',
             paddingTop: '15px',
             paddingBottom: '15px',
           }}
