@@ -1,4 +1,4 @@
-# Pilot's Flight Planning Tool
+# Pilot's Flight Planning Tool (Front-end)
 
 ### Ironhack's Web Developer Bootcamp Final Project: Full Stack Application
 
