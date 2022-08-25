@@ -6,6 +6,8 @@
 
 Online Flight planning app designed to make life easier for pilots who fly in Brazilian airspace. The ultimate online and mobile flight planner for professional and student pilots. Fast, easy to use, and easy to learn software that provides all meteorological information pilots need to plan a safe flight using weather information from the most reliable sources, such as the Brazilian Air Force.
 
+![preview](https://user-images.githubusercontent.com/57021336/186766893-9ec349f4-6c38-4d93-ba58-0470a6a80e90.gif)
+
 ### Functionalities available in the app:
 
 - Flight Record System
