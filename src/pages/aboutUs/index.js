@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import Profile from '../../images/profile.png';
+import Profile from '../../assets/images/profile.png';
 
 export function AboutUs() {
   return (
